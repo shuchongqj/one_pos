@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="transparent">#00000000</color>
+
+    <color name="white">#ffffff</color>
+    <color name="white_50">#50ffffff</color>
+    <color name="white_80">#80ffffff</color>
+    <color name="white_90">#90ffffff</color>
+
+    <color name="black">#000000</color>
+    <color name="black_50">#50000000</color>
+    <color name="black_80">#80000000</color>
+    <color name="black_90">#90000000</color>
+
+    <color name="font_3">#333333</color><!-- 一级字体颜色 -->
+    <color name="font_6">#666666</color><!-- 二级字体颜色 -->
+    <color name="font_9">#999999</color><!-- 三级字体颜色 -->
+    <color name="font_a">#AAAAAA</color><!-- 四级字体颜色 -->
+    <color name="font_9_50">#50999999</color><!-- 三级字体颜色 -->
+
+    <color name="bg_fa">#fafafa</color>
+    <color name="bg_f2">#f2f2f2</color>
+    <color name="bg_f4">#f6f6f6</color>
+    <color name="bg_e8">#e8e8e8</color>
+    <color name="bg_ef">#efefef</color>
+
+    <color name="line_d2">#d2d2d2</color>
+    <color name="line_d4">#d4d4d4</color>
+
+
+    <!-- 主颜色 -->
+    <color name="main_color_a">#f72c6a</color>
+    <color name="main_color">#f12345</color>
+
+
+
+
+
+
+
+
+
+
+
+</resources>

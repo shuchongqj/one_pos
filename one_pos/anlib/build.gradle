@@ -1,0 +1,58 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 27
+
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+
+    api 'com.android.support:recyclerview-v7:27.1.1'
+
+    //网络
+    api 'com.squareup.okhttp3:okhttp:3.3.1'
+    api 'com.squareup.okio:okio:1.8.0'
+    api 'com.lzy.net:okgo:2.1.4'
+
+    //对某个view截图
+    //api 'com.muddzdev:pixelshot:1.1.0'
+
+    //toast
+    api 'com.github.GrenderG:Toasty:1.1.4'
+
+    //Json
+    api 'com.alibaba:fastjson:1.2.8'
+
+    //下拉刷新
+    api 'in.srain.cube:ultra-ptr:1.0.11'
+
+    //时间选择器，选项选择器
+    api 'com.contrarywind:Android-PickerView:4.1.5'
+
+    //banner
+    api 'cn.bingoogolapple:bga-banner:2.2.5@aar'
+
+    //样式，按钮各种样式
+    api 'cn.luliangdev:DevShapeUtils:1.0.2'
+
+    //eventbus
+    api 'org.greenrobot:eventbus:3.1.1'
+
+}
