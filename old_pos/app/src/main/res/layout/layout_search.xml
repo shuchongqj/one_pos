@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@drawable/bg_search_blue"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:minWidth="@dimen/dp300">
+
+    <EditText
+        android:id="@+id/search_et_input"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dp48"
+        android:layout_marginLeft="@dimen/dp5"
+        android:background="@null"
+        android:drawableLeft="@mipmap/search_icon_search"
+        android:drawablePadding="@dimen/dp5"
+        android:hint="请输入商品条形码或商品名字"
+        android:imeOptions="actionSearch"
+        android:inputType="text"
+        android:textColor="@color/white"
+        android:textColorHint="#c6e9fd"
+        android:textSize="@dimen/font_14" />
+
+    <ImageView
+        android:id="@+id/search_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:padding="@dimen/height_10"
+        android:src="@mipmap/search_btn_close"
+        android:visibility="gone" />
+</RelativeLayout>
+

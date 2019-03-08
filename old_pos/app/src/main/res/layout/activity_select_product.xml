@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#e8e8e8"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical">
+
+    <include layout="@layout/layout_common_title" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp100"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <com.xw.repo.XEditText
+            android:id="@+id/et_condition"
+            android:layout_width="@dimen/dp300"
+            android:layout_height="@dimen/dp40"
+            android:background="@drawable/bg_line_gray"
+            android:lines="1"
+            android:paddingLeft="@dimen/dp5"
+            android:textColor="@color/gray1"
+            android:textCursorDrawable="@null"
+            android:textSize="@dimen/font_18"
+            app:x_clearDrawable="@mipmap/clear"
+            app:x_disableEmoji="true"
+            android:hint="请输入商品名称或者条形码" />
+
+        <Button
+            android:id="@+id/btn_search"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="@dimen/dp80"
+            android:layout_height="@dimen/dp40"
+            android:layout_marginLeft="@dimen/dp20"
+            android:background="@drawable/bg_corner_theme"
+            android:text="搜索"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dp14" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/dp60"
+        android:paddingRight="@dimen/dp60">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/grey" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp36"
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/grey" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.8"
+                android:gravity="center"
+                android:text="商品名称"
+                android:textColor="@color/gray2"
+                android:textSize="@dimen/dp14" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/grey" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.2"
+                android:gravity="center"
+                android:text="商品条码"
+                android:textColor="@color/gray2"
+                android:textSize="@dimen/dp14" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/grey" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:gravity="center"
+                android:text="进价"
+                android:textColor="@color/gray2"
+                android:textSize="@dimen/dp14" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/grey" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:gravity="center"
+                android:text="售价"
+                android:textColor="@color/gray2"
+                android:textSize="@dimen/dp14" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/grey" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.8"
+                android:gravity="center"
+                android:text="操作"
+                android:textColor="@color/gray2"
+                android:textSize="@dimen/dp14" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/grey" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/grey" />
+
+        <cn.bingoogolapple.refreshlayout.BGARefreshLayout
+            android:id="@+id/refreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/dp50">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_list"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="0dp" />
+
+        </cn.bingoogolapple.refreshlayout.BGARefreshLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

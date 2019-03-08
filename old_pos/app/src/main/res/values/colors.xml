@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#4079ff</color>
+    <color name="colorPrimaryDark">#4079ff</color>
+    <color name="colorAccent">#4079ff</color>
+
+    <color name="bg_color">#eeeeee</color>
+
+    <color name="white">#ffffff</color>
+    <color name="gold">#F9A825</color>
+    <color name="deep_gold">#E66B1A</color>
+    <color name="yellow_bg">#fef2d4</color>
+    <color name="gray1">#424242</color>
+    <color name="gray2">#696969</color>
+    <color name="gray3">#cccccc</color>
+    <color name="grey">#CCCCCC</color>
+    <color name="light_grey">#EFEBE9</color>
+    <color name="grey_bg">#FAFAFA</color>
+    <color name="deep_blue">#4079ff</color>
+    <color name="theme">#4079ff</color>
+
+    <color name="theme_green">#34da84</color>
+    <color name="divider">#EFEBE9</color>
+    <color name="home_menu_text_color">#2a2a2a</color>
+
+    <color name="base_text_color_light">#aaaaaa</color>
+    <color name="background">#f7f7f7</color>
+
+    <color name="transparent">#e0424242</color>
+
+
+    <color name="background_gradient_start">#000000</color>
+    <color name="background_gradient_end">#DDDDDD</color>
+    <color name="fastlane_background">#0096a6</color>
+    <color name="search_opaque">#ffaa3f</color>
+    <color name="detail_background">#0096a6</color>
+    <color name="soft_opaque">#30000000</color>
+    <color name="img_soft_opaque">#30FF0000</color>
+    <color name="img_full_opaque">#00000000</color>
+    <color name="black_opaque">#AA000000</color>
+    <color name="black">#222222</color>
+    <!--<color name="black">#59000000</color>-->
+    <color name="black6d">#6b6d6d</color>
+    <color name="orange_transparent">#AAFADCA7</color>
+
+    <color name="yellow">#EEFF41</color>
+    <color name="default_background">#3d3d3d</color>
+    <color name="text_black">#666666</color>
+
+
+
+    <color name="normal_white">#fafafa</color>
+    <color name="click_white">#ededed</color>
+    <color name="gray">#E1E3E5</color>
+    <color name="black1">#666666</color>
+    <color name="bg_c">#cccccc</color>
+
+    <!-- Pos 常规背景颜色 -->
+    <color name="red">#f04848</color>
+    <color name="orange">#F7b33e</color>
+    <color name="orange2">#f9a514</color>
+    <color name="blue">#4079ff</color>
+    <color name="white2">#F0F6FA</color>
+    <color name="green">#0cb300</color>
+    <color name="light_blue">#c2e6fa</color>
+
+    <color name="font_3">#333333</color>
+    <color name="font_6">#666666</color>
+    <color name="font_9">#999999</color>
+    <color name="font_select">#4079ff</color>
+    <color name="font_hint">#999999</color>
+
+
+    <!--下来框 -->
+    <color name="dropdownlist_bg">#d5c9b9</color>
+    <color name="dropdownlist_press">#9d9087</color>
+    <color name="dropdownlist_item">#f2eada</color>
+    <color name="dropdownlist_item_press">#c1b5b7</color>
+
+    <!--字体颜色-->
+    <color name="font_black">#333333</color>
+
+    //背景色
+    <color name="ly_background">#d4d4d4d4</color>
+    <color name="onebuytile">#e1f5ff</color>
+
+    <color name="alipay">#2cb5f2</color>
+    <color name="wxpay">#26c41a</color>
+    <color name="vippay">#ff6600</color>
+
+    <!--   乡村基 !-->
+    <color name="red_color_pre">#a94141</color>
+    <color name="red_color">#f9b6b6</color>
+    <color name="red_current">#f04848</color>
+    <color name="wait_color">#974f02</color>
+    <color name="wait_bg">#fef9ea</color>
+    <color name="wait_title_bg">#fdefc4</color>
+    <color name="csc_title_bg">#0187fa</color>
+    <color name="green_color">#3cc50c</color>
+    <color name="num_pre">#face01</color>
+    <color name="yellow_pre">#eec400</color>
+    <color name="num_pre_pre">#f6f6f6</color>
+    <color name="blue_pre_color">#037be1</color>
+    <color name="blue_nopre_color">#68b0ed</color>
+    <color name="num_color">#f6f6f6</color>
+
+
+    <color name="line_color">#ededed</color>
+    <color name="line_color_c">#cccccc</color>
+    <color name="blue_color">#0087fa</color>
+    <!--<color name="bg_color">#f8f8fa</color>-->
+    <color name="white_color">#ffffff</color>
+    <color name="black_gray_color">#9a9a9a</color>
+    <color name="black_color">#4c4c4c</color>
+</resources>

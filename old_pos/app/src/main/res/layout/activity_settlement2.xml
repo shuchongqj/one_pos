@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+    <include layout="@layout/layout_common_title" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <!--左边   -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2.5"
+            android:background="#e1e3e5"
+            android:padding="@dimen/dp15">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@mipmap/order_bg"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/shop_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp10"
+                    android:layout_marginTop="@dimen/dp15"
+                    android:textColor="#333333"
+                    android:textSize="@dimen/font_20"
+                    tools:text="营业员：哈姆太郎" />
+
+                <TextView
+                    android:id="@+id/shop_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp10"
+                    android:layout_marginTop="@dimen/dp10"
+                    android:textColor="#333333"
+                    android:textSize="@dimen/font_20"
+                    tools:text="营业时间：2016-5-25" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_margin="@dimen/dp10"
+                    android:layout_weight="1">
+
+                    <include layout="@layout/layout_settlement_detail" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_line1"
+                    android:background="#D4D4D4" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp60"
+                    android:layout_marginBottom="@dimen/dp15"
+                    android:layout_marginTop="@dimen/dp10">
+
+                    <TextView
+                        android:id="@+id/qingdian"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@+id/all_name"
+                        android:layout_alignStart="@+id/all_name"
+                        android:layout_alignTop="@+id/qingdian_cash"
+                        android:layout_weight="1"
+                        android:text="清点现金："
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_18"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/qingdian_cash"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@+id/order_total"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignStart="@+id/order_total"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_18"
+                        android:textStyle="bold"
+                        android:visibility="gone"
+                        tools:text="￥00.00" />
+
+
+                    <TextView
+                        android:id="@+id/all_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginLeft="@dimen/dp45"
+                        android:layout_marginStart="@dimen/dp45"
+                        android:layout_weight="1"
+                        android:text="合计："
+                        android:textColor="@color/blue"
+                        android:textSize="@dimen/font_18" />
+
+                    <TextView
+                        android:id="@+id/order_number"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@+id/qingdian"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignStart="@+id/qingdian"
+                        android:layout_alignWithParentIfMissing="false"
+                        android:layout_toLeftOf="@+id/qingdian_cash"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:textColor="@color/blue"
+                        android:textSize="@dimen/font_18"
+                        android:textStyle="bold"
+                        tools:text="800" />
+
+                    <TextView
+                        android:id="@+id/order_total"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginEnd="@dimen/dp38"
+                        android:layout_marginRight="@dimen/dp38"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:textColor="@color/red"
+                        android:textSize="@dimen/font_18"
+                        android:textStyle="bold"
+                        tools:text="￥00.00" />
+                </RelativeLayout>
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <!-- 右边 -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.5"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp48"
+                android:background="@color/normal_white"
+                android:gravity="center"
+                android:text="现金交班结算"
+                android:textSize="@dimen/font_18" />
+
+            <TextView
+                android:id="@+id/tip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/normal_white"
+                android:gravity="center"
+                android:text="现金结算完成后请在线付款至系统"
+                android:textSize="@dimen/font_18" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_line1"
+                android:layout_marginTop="@dimen/dp10"
+                android:background="#cccccc" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp50"
+                android:layout_marginTop="@dimen/dp20"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="已结算现金："
+                    android:textSize="@dimen/font_20" />
+
+                <TextView
+                    android:id="@+id/finish_pay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@mipmap/order_icon_money_red"
+                    android:text="0.00"
+                    android:textSize="@dimen/font_20" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tip_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/font_15"
+                    android:lines="2"
+                    android:maxEms="18"
+                    android:text="注意：请先清点实际现金营业额，并确认无误再输入，清点现金总额输入系统后不能更改。"
+                    android:textSize="@dimen/font_18" />
+
+                <EditText
+                    android:id="@+id/edit_cash"
+                    android:layout_width="@dimen/dp240"
+                    android:layout_height="@dimen/dp42"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/dp30"
+                    android:background="@drawable/edit_bg"
+                    android:hint="请输入清点现金金额"
+                    android:inputType="numberDecimal"
+                    android:paddingLeft="@dimen/dp10"
+                    android:textColor="@color/font_3"
+                    android:textColorHint="@color/gray3"
+                    android:textSize="@dimen/font_14" />
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <LinearLayout
+                    android:id="@+id/layout_payNotice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp50"
+                    android:layout_marginTop="@dimen/dp20">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="请扫码支付："
+                        android:textSize="@dimen/font_24" />
+
+                    <TextView
+                        android:id="@+id/text_payPrice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/red"
+                        android:textSize="@dimen/font_24"
+                        android:textStyle="bold"
+                        tools:text="￥0.00" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <CheckBox
+                android:id="@+id/checkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp50"
+                android:text="是否打印小票"
+                android:textColor="@color/font_3"
+                android:textSize="@dimen/font_18" />
+
+            <TextView
+                android:id="@+id/line"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="@dimen/font_18"
+                android:layout_marginRight="@dimen/font_18"
+                android:layout_marginTop="@dimen/dp20"
+                android:background="@mipmap/order_bg_line" />
+
+            <LinearLayout
+                android:id="@+id/layuot_onlinePay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dp50"
+                android:layout_marginTop="@dimen/dp24"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <Button
+                    android:id="@+id/Alipay"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp18"
+                    android:layout_marginRight="@dimen/dp16"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_line_blue"
+                    android:text="支付宝收款"
+                    android:textColor="@color/blue"
+                    android:textSize="@dimen/font_20" />
+
+                <Button
+                    android:id="@+id/Wechat"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/dp18"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_line_green"
+                    android:text="微信收款"
+                    android:textColor="#0ec300"
+                    android:textSize="@dimen/font_20" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/life_pay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp18"
+                android:layout_marginRight="@dimen/dp16"
+                android:layout_marginTop="@dimen/dp24"
+                android:background="#7F7F7F"
+                android:text="1号生活收款"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/font_20"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/change_pay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dp50"
+                android:layout_marginLeft="@dimen/dp18"
+                android:layout_marginRight="@dimen/dp16"
+                android:layout_marginTop="@dimen/dp24"
+                android:background="@drawable/bg_line_blue"
+                android:text="结算交班"
+                android:textColor="@color/theme"
+                android:textSize="@dimen/font_20"
+                android:visibility="gone" />
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

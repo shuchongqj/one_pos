@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_item"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dp45"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingLeft="@dimen/dp10"
+    android:paddingRight="@dimen/dp10">
+
+    <TextView
+        android:id="@+id/commodity_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginBottom="@dimen/dp5"
+        android:layout_marginTop="@dimen/dp5"
+        android:layout_weight="2"
+        android:text="商品名称"
+        android:textColor="@color/gray1"
+        android:textSize="@dimen/font_16" />
+
+    <TextView
+        android:id="@+id/commodity_price"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginBottom="@dimen/dp5"
+        android:layout_marginTop="@dimen/dp5"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="单价"
+        android:textColor="@color/gray1"
+        android:textSize="@dimen/font_20" />
+
+    <TextView
+        android:id="@+id/commodity_count"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginBottom="@dimen/dp5"
+        android:layout_marginTop="@dimen/dp5"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="数量"
+        android:textColor="@color/gray1"
+        android:textSize="@dimen/font_20" />
+
+    <TextView
+        android:id="@+id/promotionPrice"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginBottom="@dimen/dp5"
+        android:layout_marginTop="@dimen/dp5"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="优惠后金额"
+        android:textColor="@color/gray1"
+        android:textSize="@dimen/font_20" />
+</LinearLayout>

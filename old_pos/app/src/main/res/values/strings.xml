@@ -1,0 +1,147 @@
+<resources>
+    <string name="app_name">云POS</string>
+    <string name="app_name_test">测试云POS</string>
+    <string name="app_name_supermaket">云POS</string>
+    <string name="csc_name">乡村基</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_right_shop_cart">RightShopCartActivity</string>
+    <string name="browse_title"><![CDATA[Videos by Your Company]]></string>
+    <string name="related_movies">Related Videos</string>
+    <string name="vertical_grid_title"><![CDATA[Vertical Video Grid]]></string>
+    <string name="error">Error</string>
+    <string name="ok">OK</string>
+    <string name="pause">Pause</string>
+    <string name="play">Play</string>
+    <string name="stop">Stop</string>
+    <string name="init_text">00:00</string>
+    <string name="play_pause_description">Play Pause Button</string>
+    <string name="loading">Loading&#8230;</string>
+    <string name="no_video_found">No video was found</string>
+    <string name="about_app">About DemoCast Player</string>
+    <string name="version">Version: %1$s</string>
+    <string name="popular_header">Popular Videos</string>
+    <string name="preferences">PREFERENCES</string>
+    <string name="grid_view">Grid View</string>
+    <string name="error_fragment">Error Fragment</string>
+    <string name="personal_settings">Personal Settings</string>
+    <string name="watch_trailer_1">Watch trailer</string>
+    <string name="watch_trailer_2">FREE</string>
+    <string name="rent_1">Rent By Day</string>
+    <string name="rent_2">From $1.99</string>
+    <string name="buy_1">Buy and Own</string>
+    <string name="buy_2">AT $9.99</string>
+    <string name="movie">Movie</string>
+    <string name="should_start">shouldStart</string>
+    <string name="start_position">startPosition</string>
+    <string name="search_results">Search Results</string>
+
+    <!-- Error messages -->
+    <string name="video_error_media_load_timeout">Media loading timed out</string>
+    <string name="video_error_server_inaccessible">Media server was not reachable</string>
+    <string name="video_error_unknown_error">Failed to load video</string>
+    <string name="error_fragment_message">An error occurred</string>
+    <string name="dismiss_error">Dismiss</string>
+    <string name="oops">Oops</string>
+    <string name="title_activity_number_television">NumberTelevisionActivity</string>
+    <string name="title_activity_delivery">DeliveryActivityActivity</string>
+
+    <!--   jpush 提醒设置 !-->
+    <string name="hello">Hello World, JPush!</string>
+    <string name="tag_hint">Tag为大小写字母，数字，下划线,中文， 多个用以逗号分隔</string>
+    <string name="alias_hint">Alias为大小写字母，数字，下划线</string>
+    <string name="style_hint">style为数字</string>
+    <string name="error_style_empty">style不能为空</string>
+    <string name="error_alias_empty">alias不能为空</string>
+    <string name="error_tag_empty">tag不能为空</string>
+    <string name="error_tag_gs_empty">格式不对</string>
+    <string name="error_network">网络连接异常,初始化失败 请检查网络！</string>
+    <string name="logining">程序在后台执行, 请查看日志！</string>
+    <string name="setting_su">设置成功</string>
+
+    <!--商米-->
+    <string name="main_sunmilk">商米奶茶收银DEMO</string>
+    <string name="main_tb_goods_no">序列号</string>
+    <string name="main_tb_goods_name">商品名</string>
+    <string name="main_tb_goods_price">单价</string>
+    <string name="main_goods_zhaopai_milk">招牌奶茶\n￥10.00</string>
+    <string name="main_goods_yuanyang_milk">冻顶鸳鸯奶茶\n￥16.00</string>
+    <string name="main_other_function">其他功能</string>
+    <string name="main_goods_name_zhaopai">招牌奶茶</string>
+    <string name="main_goods_name_yuanyang">冻顶鸳鸯奶茶</string>
+    <string name="main_total_price">总价：</string>
+    <string name="main_num">数量：</string>
+    <string name="main_favorable_money">优惠：</string>
+    <string name="main_collect">收款：</string>
+    <string name="main_collect2">收款</string>
+    <string name="main_clear">清除</string>
+    <string name="main_nofile">文件不存在</string>
+    <string name="main_instruction">说明：该DEMO模拟一个奶茶店的收银软件的业务流程，请参照如下流程操作。\n1.Demo启动的时候，向副显App传图片\(Demo自动传递\)，副显App显示自定义欢迎页。\n2.顾客点单\(点击招牌奶茶￥10.00\)，传图片加字符数据，左边显示图片，右边显示清单。\n3.第二件商品\(点击双拼奶茶12.00\)，传图片加字符数据，左边显示图片，右边显示清单。\n4.收款\(点击收款\)，传图片加字符，左边显示图片，右边显示清单。\n
+5.回到欢迎页\(点击清除\)，传图片，副显App重新显示欢迎页。\n</string>
+    <string name="phone_state"> 获取定位权限</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <string name="str_no_serialport">Do not support serial port</string>
+    <string name="str_conn_state_disconnect">Connection state: unconnected</string>
+    <string name="str_conn_state_connecting">Connection state: connecting</string>
+    <string name="str_connecting">connecting</string>
+    <string name="str_conn_state_connected">Connection state: connected</string>
+    <string name="str_wifi_ip">Please enter IP:</string>
+    <string name="str_ip">IP: </string>
+    <string name="str_port">Port: </string>
+    <string name="str_wifi_port">Please enter the port:</string>
+    <string name="str_state_query">State query</string>
+    <string name="str_disconnect">Disconnect</string>
+    <string name="str_label_print">Label print</string>
+    <string name="str_receipt_print">Receipt print</string>
+    <string name="str_cpcl_print">CPCL print</string>
+    <string name="str_bluetooth_connect">Bluetooth</string>
+    <string name="str_usb_connect">USB</string>
+    <string name="str_wifi_connect">wifi</string>
+    <string name="str_serialport_connect">Serial port</string>
+    <string name="str_confirm">Confirm</string>
+    <string name="str_cancel">Cancel</string>
+    <string name="str_cann_printer">Please connect the printer first</string>
+    <string name="str_bluetooth">Bluetooth</string>
+    <string name="str_serialport">Serial port</string>
+    <string name="str_usb">USB</string>
+    <string name="str_wifi">WIFI</string>
+    <string name="str_conn_successful">The connection is successful!</string>
+    <string name="str_conn_fail">The connection failed!</string>
+    <string name="str_baudrate">Baud rate:</string>
+    <string name="str_serialport_path">Serial port path:</string>
+    <string name="str_conn_devices">Multi-devices</string>
+    <string name="str_conn_receipt_and_label_continuity_print">Continuous print</string>
+    <string name="str_address">Address:</string>
+    <string name="gprinter001">Printer 001</string>
+    <string name="gprinter002">Printer 002</string>
+    <string name="gprinter003">Printer 003</string>
+    <string name="gprinter004">Printer 004</string>
+    <string name="disconnect">Disconnect</string>
+    <string name="cut">Unconnected</string>
+    <string name="cutting">Disconnect the connection.</string>
+    <string name="str_disconn">Disconnect</string>
+    <string name="connect">Connect</string>
+    <string name="connected">Connected</string>
+    <string name="connecting">Connecting</string>
+    <string name="port">Interface: not set</string>
+    <string name="init_port_info">Address: unknown</string>
+    <string name="str_enter_print_counts">Please enter the number of Prints:</string>
+    <string name="str_choice_printer_command">Please select the correct printer instructions</string>
+    <string name="str_printer_conn_normal">Printer connected normal</string>
+    <string name="str_printer_out_of_paper">Printer out of paper</string>
+    <string name="str_printer_open_cover">Printer open cover</string>
+    <string name="str_printer_error">Printer error</string>
+    <string name="str_state">State: </string>
+    <string name="str_interface_undefine">Interface: Undefine</string>
+    <string name="str_select_printer_id">Select a printer with a ID of {0}</string>
+    <string name="bluetooth_is_not_enabled">bluetooth is not enabled</string>
+    <string-array name="str_interf_type">
+        <item>Bluetooth</item>
+        <item>Ethernet</item>
+        <item>USB</item>
+    </string-array>
+</resources>

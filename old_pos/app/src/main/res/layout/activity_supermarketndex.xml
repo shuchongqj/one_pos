@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.gzdb.supermarket.common.TouchLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/touchLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/widget_suppermarket_title" />
+
+        <FrameLayout
+            android:id="@+id/supermarket_frame"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/drap_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0.5"
+            android:background="@color/black">
+
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/drap_down_txt"
+            android:layout_width="@dimen/dp600"
+            android:layout_height="@dimen/dp100"
+            android:layout_gravity="center_horizontal|bottom"
+            android:alpha="0.7"
+            android:background="@color/black"
+            android:gravity="center"
+            android:padding="@dimen/dp20"
+            android:text="拖动至此，快捷下架"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_30" />
+
+        <TextView
+            android:id="@+id/drap_up_txt"
+            android:layout_width="@dimen/dp600"
+            android:layout_height="@dimen/dp100"
+            android:layout_gravity="center_horizontal|top"
+            android:alpha="0.7"
+            android:background="@color/black"
+            android:gravity="center"
+            android:padding="@dimen/dp20"
+            android:text="拖动至此，快捷上架"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_30" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/fragment_conteainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </FrameLayout>
+
+</com.gzdb.supermarket.common.TouchLayout>

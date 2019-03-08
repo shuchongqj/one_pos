@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_margin="@dimen/dp32"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/common_dialog_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/dp25"
+        android:background="@drawable/button_dialog_white"
+        android:minHeight="@dimen/dp400"
+        android:minWidth="@dimen/dp800"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp15"
+            android:text="提取暂挂单"
+            android:layout_gravity="center"
+            android:textSize="@dimen/font_22" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp300"
+            android:minHeight="@dimen/dp200"
+            android:orientation="horizontal">
+
+            <include
+                layout="@layout/layout_single_left"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <View
+                android:layout_width="@dimen/dp1"
+                android:layout_height="match_parent"
+                android:background="#D4D4D4"/>
+
+            <include
+                layout="@layout/layout_single_right"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp1"
+            android:background="#D4D4D4"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp36"
+            android:layout_marginBottom="@dimen/dp10"
+            android:layout_marginTop="@dimen/dp15"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center">
+            <Button
+                android:id="@+id/delete_order"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp36"
+                android:background="@drawable/bg_select_red"
+                android:text="删除"
+                android:textColor="@color/white" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center">
+            <Button
+                android:id="@+id/single"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp36"
+                android:background="@drawable/bg_select_blue2"
+                android:text="取单"
+                android:textColor="@color/white" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:src="@mipmap/btn_close"/>
+
+
+</LinearLayout>

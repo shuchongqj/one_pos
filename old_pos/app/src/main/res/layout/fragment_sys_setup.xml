@@ -1,0 +1,37 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="50dp"
+    android:paddingLeft="100dp"
+    android:paddingRight="100dp"
+    android:orientation="vertical">
+
+    <Switch
+        android:id="@+id/sw_stock"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="负库存功能" />
+
+    <Switch
+        android:id="@+id/sw_order_voice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="下单语音" />
+
+    <Switch
+        android:id="@+id/sw_pay_voice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="支付语音" />
+
+    <Switch
+        android:id="@+id/sw_usb_print"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="USB打印" />
+
+</LinearLayout>

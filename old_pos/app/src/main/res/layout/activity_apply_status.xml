@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="false"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <include layout="@layout/layout_common_title" />
+
+
+    <ImageView
+        android:id="@+id/iv_status"
+        android:layout_width="@dimen/dp100"
+        android:layout_height="@dimen/dp100"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dp80"
+        android:src="@mipmap/ic_success" />
+
+    <TextView
+        android:id="@+id/tv_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dp20"
+        android:textColor="@color/gray1"
+        android:textSize="@dimen/dp24" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dp10"
+        android:text="工作人员会在1-3个工作日内处理您的加盟申请"
+        android:textColor="@color/gray2"
+        android:textSize="@dimen/dp14" />
+
+    <Button
+        android:id="@+id/btn_apply"
+        android:layout_width="@dimen/dp100"
+        android:layout_height="@dimen/dp40"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dp60"
+        android:background="@drawable/bg_corner_theme"
+        android:text="返回"
+        android:textColor="@color/white"
+        android:textSize="@dimen/font_14" />
+
+</LinearLayout>

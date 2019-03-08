@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_color"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="@dimen/dp160"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <com.core.base.MRecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="@dimen/dp160"
+            android:layout_height="wrap_content"
+            android:background="#e1e3e5" />
+    </LinearLayout>
+
+    <GridView
+        android:id="@+id/menu_gridView"
+        android:layout_width="0dp"
+        android:layout_height="fill_parent"
+        android:layout_weight="4"
+        android:background="#e1e3e5"
+        android:gravity="center"
+        android:horizontalSpacing="@dimen/dp6"
+        android:numColumns="4"
+        android:paddingLeft="@dimen/dp3"
+        android:paddingRight="@dimen/dp3"
+        android:paddingTop="@dimen/dp8"
+        android:paddingBottom="@dimen/dp8"
+        android:splitMotionEvents="false"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="@dimen/dp6" />
+
+    <!-- 购物车 -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1.7"
+        android:background="#e1e3e5"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white">
+
+            <LinearLayout
+                android:id="@+id/layout_freePrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="@dimen/dp10">
+
+                <com.xw.repo.XEditText
+                    android:id="@+id/edit_freePrice"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/dp48"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_line_gray"
+                    android:drawableLeft="@mipmap/order_icon_money_red"
+                    android:hint="自由价"
+                    android:inputType="numberSigned"
+                    android:maxLength="6"
+                    android:paddingLeft="@dimen/dp10"
+                    android:textColor="@color/font_3"
+                    android:textColorHint="@color/bg_c"
+                    android:textSize="@dimen/font_22"
+                    app:x_clearDrawable="@mipmap/clear" />
+
+                <com.coorchice.library.SuperTextView
+                    android:id="@+id/btn_addFreeGood"
+                    android:layout_width="@dimen/dp70"
+                    android:layout_height="@dimen/dp48"
+                    android:layout_marginLeft="@dimen/dp10"
+                    android:background="@drawable/selector_add"
+                    android:gravity="center"
+                    android:paddingLeft="@dimen/dp15"
+                    android:paddingRight="@dimen/dp15"
+                    app:corner="@dimen/dp4"
+                    android:text="添加"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/font_18"
+                    app:stroke_color="@color/white"
+                    app:stroke_width="1dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/shop_car_tip"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/linearlayout"
+                android:layout_below="@+id/layout_freePrice"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/shoppingcar" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="购物车为空"
+                    android:textColor="@color/font_9"
+                    android:textSize="@dimen/font_18" />
+            </LinearLayout>
+
+            <ListView
+                android:id="@+id/shop_cart_list_menu"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/linearlayout"
+                android:layout_below="@+id/layout_freePrice"
+                android:background="@null"
+                android:cacheColorHint="@color/white_color"
+                android:listSelector="#00000000"
+                android:transcriptMode="alwaysScroll"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/btn_createOrder"
+                android:layout_width="@dimen/width_150"
+                android:layout_height="@dimen/dp120"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/bg_select_blue"
+                android:gravity="center"
+                android:text="立即下单"
+                android:textColor="@color/white"
+                android:textSize="@dimen/font_22" />
+
+            <LinearLayout
+                android:id="@+id/linearlayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/btn_createOrder"
+                android:background="#dff2fc"
+                android:gravity="bottom"
+                android:padding="@dimen/dp10">
+
+                <TextView
+                    android:id="@+id/heji"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginBottom="@dimen/dp2"
+                    android:layout_marginLeft="@dimen/margin_5"
+                    android:text="合计"
+                    android:textSize="@dimen/font_14" />
+
+                <TextView
+                    android:id="@+id/text_cout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/margin_3"
+                    android:layout_toRightOf="@id/heji"
+                    android:text="0"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/font_30" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginBottom="@dimen/dp2"
+                    android:layout_marginLeft="@dimen/margin_3"
+                    android:layout_toRightOf="@id/text_cout"
+                    android:text="件"
+                    android:textSize="@dimen/font_14" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/all_price"
+                    android:layout_centerVertical="true"
+                    android:layout_marginBottom="@dimen/dp2"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="共"
+                    android:textSize="@dimen/font_14" />
+
+                <TextView
+                    android:id="@+id/text_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/margin_10"
+                    android:text="￥0.00"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/font_30" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_kuadan"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp60"
+                android:layout_below="@+id/linearlayout"
+                android:layout_toLeftOf="@id/btn_createOrder"
+                android:background="@drawable/bg_select_orange"
+                android:text="挂单/取单"
+                android:textColor="@color/white"
+                android:textSize="@dimen/font_18" />
+
+            <Button
+                android:id="@+id/btn_clear"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp60"
+                android:layout_alignParentBottom="true"
+                android:layout_toLeftOf="@id/btn_createOrder"
+                android:background="@drawable/bg_select_red2"
+                android:text="清空"
+                android:textColor="@color/white"
+                android:textSize="@dimen/font_18" />
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>
+

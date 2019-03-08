@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp55"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:id="@+id/item_select_btn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.6">
+
+            <ImageView
+                android:id="@+id/item_select_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:src="@mipmap/btn_normal" />
+
+        </RelativeLayout>
+
+        <View style="@style/line_2" />
+
+        <TextView
+            android:id="@+id/item_code"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_vertical|center_horizontal"
+            android:padding="@dimen/dp10"
+            android:text="商品条码"
+            android:textColor="#666666"
+            android:textSize="@dimen/font_16"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/item_name"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="商品名称"
+            android:textColor="#666666"
+            android:textSize="@dimen/font_16" />
+
+        <View style="@style/line_2" />
+
+        <TextView
+            android:id="@+id/item_inventory"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.6"
+            android:gravity="center_vertical|center_horizontal"
+            android:padding="@dimen/dp10"
+            android:text="当前库存"
+            android:textColor="#666666"
+            android:textSize="@dimen/font_16" />
+
+        <View style="@style/line_2" />
+
+        <TextView
+            android:id="@+id/sales_num"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.6"
+            android:gravity="center"
+            android:text="近三天销量"
+            android:textSize="@dimen/font_16" />
+
+        <View style="@style/line_2" />
+
+        <TextView
+            android:id="@+id/item_price"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.8"
+            android:gravity="center_vertical|center_horizontal"
+            android:padding="@dimen/dp10"
+            android:text="采购价格"
+            android:textColor="#666666"
+            android:textSize="@dimen/font_16" />
+
+        <View style="@style/line_2" />
+
+        <!--<TextView
+            android:id="@+id/item_standard"
+            android:padding="@dimen/dp10"
+            android:text="采购规格"
+            android:textSize="@dimen/font_16"
+            android:textColor="#666666"
+            android:gravity="center_vertical|center_horizontal"
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
+            android:layout_height="match_parent" />
+        <View
+            style="@style/line_2"/>
+
+        <TextView
+            android:id="@+id/text_stockPersent"
+            android:text="进价毛利率"
+            android:textSize="@dimen/font_16"
+            android:textColor="#666666"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent" />
+        <View
+            style="@style/line_2"/>
+        <TextView
+            android:id="@+id/text_sellPersent"
+            android:text="售价毛利率"
+            android:textSize="@dimen/font_16"
+            android:textColor="#666666"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent" />
+        <View
+            style="@style/line_2"/>-->
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.5"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp40"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/dp10"
+                android:paddingRight="@dimen/dp10">
+
+                <RelativeLayout
+                    android:id="@+id/count_del_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:padding="@dimen/dp10">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_centerVertical="true"
+                        android:src="@mipmap/idel" />
+                </RelativeLayout>
+
+                <EditText
+                    android:id="@+id/count_edittext"
+                    android:layout_width="0dp"
+                    android:inputType="number"
+                    android:layout_height="@dimen/dp30"
+                    android:layout_centerVertical="true"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_edittext_nomal"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"/>
+
+                <RelativeLayout
+                    android:id="@+id/count_add_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:padding="@dimen/dp10">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_centerVertical="true"
+                        android:src="@mipmap/iadd" />
+                </RelativeLayout>
+
+            </LinearLayout>
+
+
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/tv_hint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="最低5件起购"
+                android:textColor="@color/orange2"
+                android:textSize="@dimen/font_10" />
+        </LinearLayout>
+
+        <View style="@style/line_2" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.8">
+
+            <com.gzdb.supermarket.common.XCDropDownListView
+                android:id="@+id/item_unit"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp32"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/dp10"
+                android:layout_marginRight="@dimen/dp10"
+                android:layout_weight="1"
+                android:background="@drawable/bg_line_gray" />
+        </LinearLayout>
+
+        <View style="@style/line_2" />
+
+        <TextView
+            android:id="@+id/item_total_price"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical|center_horizontal"
+            android:padding="@dimen/dp10"
+            android:text="金额小计"
+            android:textColor="#666666"
+            android:textSize="@dimen/font_16" />
+    </LinearLayout>
+
+    <View style="@style/line_1" />
+
+</LinearLayout>

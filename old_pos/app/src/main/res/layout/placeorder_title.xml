@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dp50"
+    android:background="@color/theme"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:id="@+id/comebace_layout"
+        android:layout_width="@dimen/dp60"
+        android:layout_height="@dimen/dp48"
+        android:layout_alignParentLeft="true"
+        android:layout_centerInParent="true"
+        android:gravity="center">
+        <!-- 返回-->
+        <ImageView
+            android:id="@+id/comeback"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp16"
+            android:layout_marginRight="@dimen/dp16"
+            android:src="@mipmap/btn_back" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/supermarket_title"
+        android:layout_width="@dimen/dp120"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:gravity="center_vertical"
+        android:text="立即下单"
+        android:textColor="@color/white"
+        android:textSize="@dimen/font_20" />
+</RelativeLayout>

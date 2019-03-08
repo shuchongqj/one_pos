@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/dp550"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@drawable/button_dialog_white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_marginBottom="@dimen/dp20"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="@dimen/dp48"
+            android:layout_height="@dimen/dp48"
+            android:layout_marginLeft="@dimen/dp5"
+            android:layout_marginTop="@dimen/dp5"
+            android:padding="@dimen/dp5"
+            android:src="@mipmap/ico_j_back" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp48"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dp5"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="加入会员"
+            android:textColor="@color/font_3"
+            android:textSize="@dimen/common_14" />
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp40"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/ev_phone"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp55"
+                android:layout_below="@id/tv_title"
+                android:layout_marginRight="@dimen/dp20"
+                android:layout_weight="3"
+                android:textColorHint="@color/font_9"
+                android:textColor="@color/font_3"
+                android:background="@drawable/bg_line_gray2"
+                android:hint="请输入手机号"
+                android:padding="@dimen/dp5"
+                android:textSize="@dimen/common_14" />
+
+            <EditText
+                android:id="@+id/ev_name"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp55"
+                android:layout_below="@id/tv_title"
+                android:layout_weight="2"
+                android:textColorHint="@color/font_9"
+                android:textColor="@color/font_3"
+                android:background="@drawable/bg_line_gray2"
+                android:hint="真实姓名"
+                android:padding="@dimen/dp5"
+                android:textSize="@dimen/common_14" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp25"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/ev_code"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp55"
+                android:layout_below="@id/tv_title"
+                android:layout_marginRight="@dimen/dp20"
+                android:layout_weight="3"
+                android:textColorHint="@color/font_9"
+                android:textColor="@color/font_3"
+                android:background="@drawable/bg_line_gray2"
+                android:hint="请输入验证码"
+                android:padding="@dimen/dp5"
+                android:textSize="@dimen/common_14" />
+
+            <TextView
+                android:id="@+id/btn_code"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="@dimen/dp55"
+                android:background="@drawable/bg_corner_orange"
+                android:text="发送验证码"
+                android:textColor="@color/white"
+                android:textSize="@dimen/font_14" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_check"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_below="@+id/ll_input"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp48"
+            android:layout_marginTop="@dimen/dp30"
+            android:background="@drawable/bg_corner_theme"
+            android:text="注册"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_14" />
+    </LinearLayout>
+
+
+</LinearLayout>

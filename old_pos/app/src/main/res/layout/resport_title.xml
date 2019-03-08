@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="@dimen/dp40"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:id="@+id/layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="@dimen/dp1"
+            android:layout_height="match_parent"
+            android:background="#dedede" />
+
+        <TextView
+            android:id="@+id/position"
+            android:layout_width="@dimen/dp80"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="排名"
+            android:textSize="@dimen/font_16" />
+
+        <View
+            android:layout_width="@dimen/dp1"
+            android:layout_height="match_parent"
+            android:background="#dedede" />
+
+        <TextView
+            android:id="@+id/menuName"
+            android:layout_width="@dimen/dp160"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical|center_horizontal"
+            android:padding="@dimen/dp10"
+            android:text="商品名称"
+            android:textSize="@dimen/font_16" />
+
+        <View
+            android:layout_width="@dimen/dp1"
+            android:layout_height="match_parent"
+            android:background="#dedede" />
+
+        <TextView
+            android:id="@+id/menuTypeName"
+            android:layout_width="110dp"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical|center_horizontal"
+            android:padding="@dimen/dp10"
+            android:text="所属分类"
+            android:textSize="@dimen/font_16" />
+
+        <View
+            android:layout_width="@dimen/dp1"
+            android:layout_height="match_parent"
+            android:background="#dedede" />
+
+        <TextView
+            android:id="@+id/totalSales"
+            android:layout_width="@dimen/dp130"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical|center_horizontal"
+            android:padding="@dimen/dp10"
+            android:text="实时销售数"
+            android:textSize="@dimen/font_16" />
+
+        <View
+            android:layout_width="@dimen/dp1"
+            android:layout_height="match_parent"
+            android:background="#dedede" />
+
+        <TextView
+            android:id="@+id/totalMoney"
+            android:layout_width="@dimen/dp130"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical|center_horizontal"
+            android:padding="@dimen/dp10"
+            android:text="实时销售金额"
+            android:textSize="@dimen/font_16" />
+
+
+        <View
+            android:layout_width="@dimen/dp1"
+            android:layout_height="match_parent"
+            android:background="#dedede" />
+
+        <TextView
+            android:id="@+id/grossMargin"
+            android:layout_width="@dimen/dp100"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical|center_horizontal"
+            android:padding="@dimen/dp10"
+            android:text="毛利"
+            android:textSize="@dimen/font_16" />
+
+        <View
+            android:layout_width="@dimen/dp1"
+            android:layout_height="match_parent"
+            android:background="#dedede" />
+
+        <TextView
+            android:id="@+id/grossProfit"
+            android:layout_width="@dimen/dp120"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical|center_horizontal"
+            android:padding="@dimen/dp10"
+            android:text="毛利率"
+            android:textSize="@dimen/font_16" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/layout_common_title" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/ll_nav"
+            android:layout_width="@dimen/dp160"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_nav"
+                android:layout_width="@dimen/dp160"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/divider" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:elevation="2dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp40"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/dp40"
+                    android:paddingRight="@dimen/dp40"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true">
+
+                    <com.xw.repo.XEditText
+                        android:id="@+id/et_condition"
+                        android:layout_width="@dimen/dp300"
+                        android:layout_height="@dimen/dp40"
+                        android:background="@drawable/bg_line_gray"
+                        android:hint="请输入商品名称"
+                        android:lines="1"
+                        android:paddingLeft="@dimen/dp5"
+                        android:textColor="@color/gray1"
+                        android:textCursorDrawable="@null"
+                        android:textSize="@dimen/font_18"
+                        app:x_clearDrawable="@mipmap/clear"
+                        app:x_disableEmoji="true" />
+
+                    <Button
+                        android:id="@+id/btn_search"
+                        style="?android:attr/borderlessButtonStyle"
+                        android:layout_width="@dimen/dp80"
+                        android:layout_height="@dimen/dp40"
+                        android:layout_marginLeft="@dimen/dp20"
+                        android:background="@drawable/bg_corner_theme"
+                        android:text="搜索"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/dp14" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/dp15"
+                    android:layout_marginBottom="@dimen/dp15"
+                    android:paddingLeft="@dimen/dp40"
+                    android:paddingRight="@dimen/dp40"
+                    android:text="*说明：商家使用模板创建的售卖商品，其发货和送货皆由1号生活负责，商家每完成一笔此类商品的交易，可获得相应的奖励金"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/dp14" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/divider" />
+            </LinearLayout>
+
+            <cn.bingoogolapple.refreshlayout.BGARefreshLayout
+                android:id="@+id/refreshLayout"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+            </cn.bingoogolapple.refreshlayout.BGARefreshLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

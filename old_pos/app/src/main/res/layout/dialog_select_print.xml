@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="380dp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_dialog"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="选择打印类型"
+        android:textColor="@color/gray1"
+        android:textSize="16dp"
+        android:textStyle="bold" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="10dp">
+
+        <RadioButton
+            android:id="@+id/rbtn_yundou"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="云兜便利店打印纸类型"
+            android:textColor="@color/gray1"
+            android:textSize="14dp" />
+
+        <RadioButton
+            android:id="@+id/rbtn_yundou2"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="云兜便利店打印纸类型(大字体)"
+            android:textColor="@color/gray1"
+            android:textSize="14dp" />
+
+        <RadioButton
+            android:id="@+id/rbtn_yundou3"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="云兜便利店打印纸类型(超大字体)"
+            android:textColor="@color/gray1"
+            android:textSize="14dp" />
+
+        <RadioButton
+            android:id="@+id/rbtn_duimi"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="对米便利店打印纸类型"
+            android:textColor="@color/gray1"
+            android:textSize="14dp" />
+
+        <RadioButton
+            android:id="@+id/rbtn_duimi2"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="对米便利店打印纸类型(大字体)"
+            android:textColor="@color/gray1"
+            android:textSize="14dp" />
+
+        <RadioButton
+            android:id="@+id/rbtn_life"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="1号生活便利店打印纸类型"
+            android:textColor="@color/gray1"
+            android:textSize="14dp" />
+
+        <RadioButton
+            android:id="@+id/rbtn_barcode"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="商品条码"
+            android:textColor="@color/gray1"
+            android:textSize="14dp" />
+        <RadioButton
+            android:id="@+id/rbtn_barcode_label"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="商品条码标签"
+            android:textColor="@color/gray1"
+            android:textSize="14dp" />
+
+    </RadioGroup>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/divider" />
+
+
+    <Button
+        android:id="@+id/btn_commit"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/bg_dialog_btn"
+        android:text="确定"
+        android:textColor="@color/colorAccent"
+        android:textSize="14dp"
+        android:textStyle="bold" />
+</LinearLayout>

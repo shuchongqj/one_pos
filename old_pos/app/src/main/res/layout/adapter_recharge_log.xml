@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/dp15"
+    android:background="@color/white"
+    android:orientation="horizontal">
+
+    <View
+        android:layout_width="2px"
+        android:layout_height="match_parent"
+        android:background="@color/line_color" />
+
+    <TextView
+        android:id="@+id/user_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.5"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="1"
+        android:padding="8dp"
+        android:text="商家名称"
+        android:textColor="@color/font_3"
+        android:textSize="15sp" />
+
+    <View
+        android:layout_width="2px"
+        android:layout_height="match_parent"
+        android:background="@color/line_color"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/user_account"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.5"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="1"
+        android:padding="8dp"
+        android:text="商家账号"
+        android:textColor="@color/font_3"
+        android:textSize="15sp"
+        android:visibility="gone" />
+
+    <View
+        android:layout_width="2px"
+        android:layout_height="match_parent"
+        android:background="@color/line_color" />
+
+    <TextView
+        android:id="@+id/recharge_day"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="1"
+        android:padding="8dp"
+        android:text="续租时长(天)"
+        android:textColor="@color/font_3"
+        android:textSize="15sp" />
+
+    <View
+        android:layout_width="2px"
+        android:layout_height="match_parent"
+        android:background="@color/line_color" />
+
+    <TextView
+        android:id="@+id/recharge_money"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="1"
+        android:padding="8dp"
+        android:text="支付金额(元)"
+        android:textColor="@color/font_3"
+        android:textSize="15sp" />
+
+    <View
+        android:layout_width="2px"
+        android:layout_height="match_parent"
+        android:background="@color/line_color" />
+
+    <TextView
+        android:id="@+id/recharge_pay_type"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="1"
+        android:padding="8dp"
+        android:text="支付类型"
+        android:textColor="@color/font_3"
+        android:textSize="15sp" />
+
+    <View
+        android:layout_width="2px"
+        android:layout_height="match_parent"
+        android:background="@color/line_color" />
+
+    <TextView
+        android:id="@+id/new_time"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.5"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="1"
+        android:padding="8dp"
+        android:text="历史到期时间"
+        android:textColor="@color/font_3"
+        android:textSize="15sp" />
+
+    <View
+        android:layout_width="2px"
+        android:layout_height="match_parent"
+        android:background="@color/line_color" />
+
+    <TextView
+        android:id="@+id/recharge_time"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.5"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="1"
+        android:padding="8dp"
+        android:text="下单时间"
+        android:textColor="@color/font_3"
+        android:textSize="15sp" />
+
+    <View
+        android:layout_width="2px"
+        android:layout_height="match_parent"
+        android:background="@color/line_color" />
+
+</LinearLayout>

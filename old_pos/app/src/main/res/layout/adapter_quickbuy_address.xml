@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/dp5"
+    android:background="@color/white">
+
+    <TextView
+        android:id="@+id/address_name"
+        android:layout_width="@dimen/dp180"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
+        android:padding="5dp"
+        android:textStyle="bold"
+        android:text="陈总监"
+        android:textColor="@color/font_black"
+        android:textSize="@dimen/font_16" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:layout_toRightOf="@id/address_name"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="@dimen/dp20"
+            android:layout_height="@dimen/dp20"
+            android:src="@mipmap/ic_phone"/>
+
+        <TextView
+            android:id="@+id/address_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:padding="5dp"
+            android:text="18688888888"
+            android:textColor="@color/font_black"
+            android:textSize="@dimen/font_16" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/address_more"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/address_name"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
+        android:padding="5dp"
+        android:text="广州市番禺区钟村街道兴宏一街14号"
+        android:textColor="@color/font_black"
+        android:textSize="@dimen/font_12" />
+    
+    <View
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp1"
+        android:layout_marginTop="@dimen/dp5"
+        android:background="@color/line_color"
+        android:layout_below="@id/address_more"/>
+
+    <TextView
+        android:id="@+id/default_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/line"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
+        android:drawableLeft="@mipmap/public_btn_multiselect"
+        android:drawablePadding="@dimen/dp5"
+        android:padding="5dp"
+        android:text="默认地址"
+        android:textColor="@color/font_black"
+        android:textSize="@dimen/font_14" />
+
+    <TextView
+        android:id="@+id/btn_delete_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/line"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
+        android:drawablePadding="@dimen/dp5"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="@dimen/dp30"
+        android:layout_marginRight="@dimen/dp20"
+        android:padding="5dp"
+        android:text="删除"
+        android:textColor="@color/blue"
+        android:textSize="@dimen/font_14" />
+
+    <TextView
+        android:id="@+id/btn_update_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/line"
+        android:layout_toLeftOf="@id/btn_delete_address"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
+        android:drawablePadding="@dimen/dp5"
+        android:padding="5dp"
+        android:text="编辑"
+        android:textColor="@color/blue"
+        android:textSize="@dimen/font_14" />
+
+</RelativeLayout>

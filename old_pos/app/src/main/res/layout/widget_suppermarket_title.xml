@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/theme"
+    android:orientation="horizontal"
+    android:padding="@dimen/dp10">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/dp10"
+            android:orientation="vertical">
+
+            <com.gzdb.supermarket.util.ScrollAlwaysTextView
+                android:id="@+id/merchantName"
+                android:layout_width="@dimen/dp130"
+                android:layout_height="wrap_content"
+                android:alpha="0.8"
+                android:ellipsize="marquee"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:singleLine="true"
+                android:text=""
+                android:textColor="@color/white"
+                android:textSize="@dimen/font_26" />
+
+            <TextView
+                android:id="@+id/userName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxEms="6"
+                android:singleLine="true"
+                android:text="店长：名称"
+                android:textColor="@color/white"
+                android:textSize="@dimen/font_16" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/btn_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:layout_marginRight="@dimen/dp10"
+            android:background="@drawable/bg_line_blue"
+            android:paddingBottom="@dimen/dp8"
+            android:paddingLeft="@dimen/dp10"
+            android:paddingRight="@dimen/dp10"
+            android:paddingTop="@dimen/dp8"
+            android:text="菜单栏"
+            android:textColor="@color/theme"
+            android:textSize="@dimen/font_20" />
+
+        <com.gongwen.marqueen.MarqueeView
+            android:id="@+id/marqueeView"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp40"
+            android:layout_weight="1"
+            app:marqueeInterval="5000" />
+
+        <RelativeLayout
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="@dimen/dp100"
+            android:layout_height="match_parent"
+            android:layout_marginRight="@dimen/dp10"
+            android:background="@color/theme"
+            android:textColor="@color/theme"
+            android:textSize="@dimen/dp13"
+            android:visibility="visible" >
+
+            <Button
+                android:id="@+id/bt_fresh"
+                android:layout_width="@dimen/dp80"
+                android:layout_height="@dimen/dp42"
+                android:layout_centerInParent="true"
+                style="?android:attr/borderlessButtonStyle"
+                android:background="@drawable/bg_line_blue"
+                android:text="生鲜系统"
+                android:textColor="@color/theme"
+                android:textSize="@dimen/dp13"
+                android:visibility="visible" />
+
+            <TextView
+                android:id="@+id/o1_txt_num"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="-10dp"
+                android:layout_toRightOf="@+id/bt_fresh"
+                android:background="@drawable/btn_round_red"
+                android:gravity="center|center"
+                android:text="0"
+                android:textColor="#ffffff"
+                android:textSize="8sp"
+                android:visibility="gone"
+                />
+
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/btn_spread"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="@dimen/dp70"
+            android:layout_height="@dimen/dp42"
+            android:layout_marginRight="@dimen/dp10"
+            android:background="@drawable/bg_line_blue"
+            android:text="会员推广"
+            android:textColor="@color/theme"
+            android:textSize="@dimen/dp13"
+            android:visibility="gone" />
+
+        <com.coorchice.library.SuperTextView
+            android:id="@+id/img_chargeRecord"
+            android:layout_width="@dimen/dp50"
+            android:layout_height="@dimen/dp50"
+            android:layout_marginRight="@dimen/dp10"
+            app:corner="10dp"
+            app:isShowState="true"
+            app:solid="@color/white"
+            app:state_drawable="@mipmap/charge_record"
+            app:state_drawable_height="@dimen/dp35"
+            app:state_drawable_width="@dimen/dp35" />
+
+
+        <TextView
+            android:id="@+id/udata_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|right"
+            android:layout_marginRight="@dimen/dp10"
+            android:background="@drawable/bg_line_blue"
+            android:paddingBottom="@dimen/dp8"
+            android:paddingLeft="@dimen/dp8"
+            android:paddingRight="@dimen/dp8"
+            android:paddingTop="@dimen/dp8"
+            android:text="刷新"
+            android:textColor="@color/theme"
+            android:textSize="@dimen/font_20" />
+
+        <com.gzdb.supermarket.common.SearchView
+            android:id="@+id/e_search"
+            android:layout_width="@dimen/dp220"
+            android:layout_height="@dimen/dp40"
+            android:layout_gravity="center_vertical|right" />
+
+    </LinearLayout>
+
+</LinearLayout>

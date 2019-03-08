@@ -1,0 +1,48 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="50dp"
+    android:paddingLeft="100dp"
+    android:paddingRight="100dp"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/btn_clear"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="@dimen/dp100"
+        android:layout_height="@dimen/dp40"
+        android:layout_marginTop="@dimen/dp50"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/bg_corner_theme"
+        android:text="清零"
+        android:textColor="@color/white"
+        android:textSize="@dimen/dp16" />
+
+    <Button
+        android:id="@+id/btn_tare"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="@dimen/dp100"
+        android:layout_height="@dimen/dp40"
+        android:layout_marginTop="@dimen/dp50"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/bg_corner_theme"
+        android:text="去皮"
+        android:textColor="@color/white"
+        android:textSize="@dimen/dp16" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginRight="@dimen/dp28"
+        android:layout_marginTop="@dimen/dp15"
+        android:background="@drawable/line_dotted"
+        android:layerType="software" />
+
+    <Switch
+        android:id="@+id/sw_shop_cart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="打印并加入购物车" />
+
+</LinearLayout>

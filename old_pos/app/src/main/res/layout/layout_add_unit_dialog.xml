@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_margin="@dimen/dp40"
+    android:background="@drawable/button_dialog_white"
+    android:minHeight="@dimen/dp150"
+    android:minWidth="@dimen/dp400"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="新增单位"
+        android:textSize="@dimen/font_20"
+        android:layout_gravity="center"
+        android:textColor="#262626"
+        android:layout_marginBottom="@dimen/height_5"
+        android:layout_marginTop="@dimen/height_5"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_line"
+        android:background="@color/gray2" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/dp20"
+        android:layout_gravity="center"
+        >
+
+
+        <EditText
+            android:id="@+id/unit"
+            android:layout_width="@dimen/dp200"
+            android:layout_height="@dimen/dp40"
+            android:background="@drawable/bg_edittext_nomal"
+            android:paddingLeft="@dimen/dp10"
+            android:paddingRight="@dimen/height_10"
+            android:textColor="@color/black"
+            android:cursorVisible="true"
+            android:maxLength="15"
+            android:singleLine="true"
+            android:textCursorDrawable="@null"
+            android:hint=""/>
+
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_line1"
+        android:background="@color/gray2"
+        android:layout_marginTop="@dimen/dp20"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="bottom"
+        >
+        <Button
+            android:id="@+id/cancel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="取消"
+            android:background="@null"
+            android:textColor="@color/blue"
+            />
+        <TextView
+            android:layout_width="@dimen/height_line1"
+            android:layout_height="match_parent"
+            android:background="@color/gray2"
+            />
+        <Button
+            android:id="@+id/save"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="保存"
+            android:background="@null"
+            android:textColor="@color/black1"
+            />
+    </LinearLayout>
+
+
+
+</LinearLayout>

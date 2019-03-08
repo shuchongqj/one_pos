@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/layout_common_title" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="160dp"
+            android:layout_height="match_parent"
+            android:background="@color/ly_background"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_system_setting"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp80"
+                android:background="@color/white"
+                android:gravity="center"
+                android:text="系统设置"
+                android:textSize="@dimen/font_18" />
+
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/tv_mainimg_setting"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp80"
+                android:gravity="center"
+                android:text="副屏主图设置"
+                android:textSize="@dimen/font_18" />
+
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/tv_banner_setting"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp80"
+                android:gravity="center"
+                android:text="副屏轮播图设置"
+                android:textSize="@dimen/font_18" />
+
+            <TextView
+                android:id="@+id/tv_scale_setting"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp80"
+                android:gravity="center"
+                android:text="电子称设置"
+                android:textSize="@dimen/font_18" />
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/content"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
+</LinearLayout>

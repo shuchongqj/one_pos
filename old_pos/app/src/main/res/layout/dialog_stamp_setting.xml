@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fsms="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/dialog_bg"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp40"
+        android:background="@drawable/bg_dialog_title"
+        android:gravity="center"
+        android:text="连接打印机"
+        android:textColor="@color/white"
+        android:textSize="@dimen/font_18" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp10"
+        android:lineSpacingMultiplier="1.2"
+        android:gravity="center"
+        android:text="请确保蓝牙打印机已连接至POS机，若已连接，请输入蓝牙打印机背部序列号"
+        android:textColor="@color/font_6"
+        android:textSize="@dimen/font_14" />
+
+    <com.gzdb.supermarket.common.DivisionEditText
+        android:id="@+id/det_code"
+        android:layout_width="240dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_white_back_and_corner"
+        android:digits="1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+        android:gravity="center"
+        fsms:delimiter=":"
+        fsms:eachLength="2"
+        fsms:placeHolder="—"
+        fsms:totalLength="12" />
+
+    <Button
+        android:id="@+id/btn_stamp_connect"
+        android:layout_width="@dimen/dp150"
+        android:layout_height="@dimen/dp35"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:layout_marginTop="@dimen/dp40"
+        android:layout_toLeftOf="@id/btn_stamp"
+        android:background="@drawable/bg_select_blue2"
+        android:text="确认连接"
+        android:textColor="@color/white"
+        android:textSize="@dimen/font_18" />
+
+
+</LinearLayout>

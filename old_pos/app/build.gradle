@@ -1,0 +1,235 @@
+apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao'
+apply plugin: 'bugly'
+
+bugly {
+    appId = 'd325e8e65a' // 注册时分配的App ID
+    appKey = '402623ce-9bf4-4cef-95a1-43cf582b9004' // 注册时分配的App Key
+    debug = true
+}
+
+android {
+    signingConfigs {
+        debugSinge {
+            keyAlias 'key'
+            keyPassword '123456'
+            storeFile file('../market.store')
+            storePassword '123456'
+        }
+        releaseSinge {
+            keyAlias 'key'
+            keyPassword '123456'
+            storeFile file('../market.store')
+            storePassword '123456'
+        }
+    }
+
+    compileSdkVersion 27
+    buildToolsVersion '28.0.2'
+    //默认版本
+    defaultConfig {
+        applicationId "com.dianba.ipad_db"
+        minSdkVersion 19
+        targetSdkVersion 27
+        versionCode 262
+        versionName "2.6.2"
+        //1超市版，2基础版，3管家版
+        buildConfigField 'int', 'APP_TYPE', '1'
+        buildConfigField 'String', 'BASE_URL', '"http://no1.0085.com/"'
+
+        buildConfigField 'String', 'B_BASE_URL', '"https://customer.0085.com/"'
+
+        buildConfigField 'String', 'SUPPLY_BASE_URL', '"http://120.76.188.213:8080"'
+        manifestPlaceholders = [APP_NAME: "@string/app_name_supermaket", APP_ICON: "@mipmap/supermaket_icon"]
+        multiDexEnabled true
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        externalNativeBuild {
+            cmake {
+                cppFlags ""
+            }
+        }
+
+        javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
+    }
+
+    buildTypes {
+        debug {
+            applicationIdSuffix '.debug'
+            resValue("string", "PORT_NUMBER", "8088")//这是查看本地数据库的配置
+            buildConfigField 'boolean', 'APP_DEBUG', "true"
+//            buildConfigField 'String', 'BASE_URL', '"http://apptest.0085.com/"'
+            buildConfigField 'String', 'B_BASE_URL', '"https://customer.0085.com/"'
+//            buildConfigField 'String', 'B_BASE_URL', '"https://customer.0085.com/"'
+//            buildConfigField 'String', 'B_BASE_URL', '"https://tcustomer.0085.com/"'
+//            buildConfigField 'String', 'BASE_URL', '"http://120.24.240.5:10001"'
+//            buildConfigField 'String', 'BASE_URL', '"http://112.74.214.191:10001"'
+//            buildConfigField 'String', 'BASE_URL', '"http://192.168.0.187:8080/"'
+            buildConfigField 'String', 'BASE_URL', '"http://no1.0085.com/"'
+
+            //在 AndroidManifest.xml 以 ${APP_NAME} 调用
+            manifestPlaceholders = [APP_NAME     : "@string/app_name_test",
+                                    APP_ICON     : "@mipmap/icon",
+                                    JPUSH_KEY    : "10ba6809d6848403d338526d",  //10ba6809d6848403d338526d
+                                    JPUSH        : "com.dianba.ipad_db.debug.permission.JPUSH_MESSAGE",
+                                    BAIDU_API_KEY: "G5QdlxCE5YA5RHpC4BFnn2xSRBan3ExZ"]
+            signingConfig signingConfigs.debugSinge
+        }
+        release {
+            minifyEnabled false
+            multiDexEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField 'boolean', 'APP_DEBUG', "false"
+            buildConfigField 'String', 'BASE_URL', '"http://no1.0085.com/"'
+            buildConfigField 'String', 'B_BASE_URL', '"https://customer.0085.com/"'
+//            buildConfigField 'String', 'BASE_URL', '"http://120.24.240.5:10001/"'
+            //在 AndroidManifest.xml 以 ${APP_NAME}
+            manifestPlaceholders = [APP_NAME     : "@string/app_name_supermaket",
+                                    APP_ICON     : "@mipmap/icon",
+                                    JPUSH_KEY    : "07e031d604a9311d8d8bd700",
+                                    JPUSH        : "com.dianba.ipad_db.permission.JPUSH_MESSAGE",
+                                    BAIDU_API_KEY: "y48SQkQqkjQw4GwYBxEd8mvktIyjcz99"]
+            signingConfig signingConfigs.releaseSinge
+        }
+    }
+
+    lintOptions {
+        abortOnError false
+        checkReleaseBuilds false
+    }
+    dexOptions {
+        //使用增量模式构建
+        //  incremental true
+        //最大堆内存
+        javaMaxHeapSize "8g"
+        //是否支持大工程模式
+        jumboMode = true
+        //预编译
+        preDexLibraries = true
+        //线程数
+        threadCount = 8
+    }
+    externalNativeBuild {
+        cmake {
+            path "CMakeLists.txt"
+        }
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']  // <-- Set your folder here!
+        }
+    }
+
+    configurations.all {
+        resolutionStrategy.force 'com.android.support:multidex:+'
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+    //greendao配置
+    greendao {
+        //版本号，升级时可配置
+        schemaVersion 16
+        daoPackage 'com.gzdb.basepos.greendao'
+        targetGenDir 'src/main/java'
+    }
+}
+
+dependencies {
+
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
+
+    //    testcompile 'junit:junit:4.12'
+
+    //    androidTestcompile 'com.android.support.test:runner:1.0.2'
+
+    //    androidTestcompile 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    implementation 'com.android.support:support-v4:27.1.1'
+    implementation 'com.android.support:design:27.1.1'
+    implementation 'com.android.support:multidex:+'
+
+    //网络
+    implementation 'com.squareup.okhttp3:okhttp:3.3.1'
+    implementation 'com.squareup.okio:okio:1.8.0'
+    implementation 'com.lzy.net:okhttputils:1.8.0'
+
+    //商米
+    implementation 'cn.finalteam:galleryfinal:1.4.8.7'
+    implementation 'com.sunmi:sunmiui:1.0.2'
+    implementation 'com.sunmi:DS_Lib:1.0.13'
+
+    //友盟统计
+    implementation 'com.umeng.analytics:analytics:6.1.1'
+
+    //崩溃日志收集
+    implementation 'com.tencent.bugly:crashreport_upgrade:1.3.1'
+
+    //性能检测工具
+    implementation 'com.github.markzhai:blockcanary-android:1.5.0'
+
+    //greendao依赖
+    implementation 'org.greenrobot:greendao:3.2.0'
+    implementation files('libs/jcore-android-1.1.5.jar')
+    implementation files('libs/jpush-android-3.0.7.jar')
+    implementation files('libs/com.baidu.tts_2.3.0.jar')
+
+    //百度
+    //compile files('libs/BaiduLBS_Android.jar')
+    //compile files('libs/Baidu_Mtj_3.7.6.1.jar')
+
+    //图片
+    implementation 'com.github.bumptech.glide:glide:4.0.0-RC1'
+    implementation 'jp.wasabeef:glide-transformations:2.0.2'
+
+    //组件
+    implementation 'org.greenrobot:eventbus:3.0.0'
+    implementation 'com.zhy:flowlayout-lib:1.0.3'
+    implementation 'com.github.GrenderG:Toasty:1.1.4'
+    implementation('cn.qqtheme.framework:WheelPicker:1.5.2') {
+        exclude group: 'com.android.support'
+    }
+    implementation 'com.github.hss01248:NotifyUtil:1.0.0'
+    implementation 'com.github.chenBingX:SuperTextView:v1.3'
+    implementation 'com.gongwen:marqueelibrary:1.0.4'
+    implementation 'com.zzhoujay.richtext:richtext:2.5.2'
+    implementation 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
+    implementation 'cn.bingoogolapple:bga-refreshlayout:1.1.7@aar'
+    implementation 'com.xw.repo:xedittext:2.0.3@aar'
+
+    //权限
+    implementation 'com.yanzhenjie:permission:1.0.5'
+
+    //查看本地数据库
+    implementation 'com.amitshekhar.android:debug-db:1.0.0'
+
+    //网络
+    implementation 'com.lzy.net:okgo:3.0.4'
+
+    //    compile 'com.lzy.net:okrx:1.0.2'
+    implementation 'com.lzy.net:okrx:0.1.2'
+    implementation 'com.contrarywind:Android-PickerView:4.1.3'
+    implementation project(':dialoglib')
+    implementation project(':turbo-recyclerview')
+
+    //    compile 'com.github.kongqw:AndroidSerialPort:1.0.1'
+    implementation 'com.apkfuns.logutils:library:1.4.2.2'
+    implementation 'com.github.arcadefire:nice-spinner:1.3.1'
+    implementation 'com.google.zxing:core:3.3.0'
+    implementation files('libs/jcc-bate-0.7.3.jar')
+    implementation files('libs/ksoap2-android-assembly-2.5.2-jar-with-dependencies.jar')
+    implementation files('libs/xUtils-2.6.14.jar')
+
+    //打印用的
+    implementation 'com.android.support:cardview-v7:27.1.1'
+    implementation files('libs/scale-service-lib.jar')
+    implementation files('libs/Gpsdkv1.jar')
+    implementation project(':anlib')
+}

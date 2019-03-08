@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/dp550"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@drawable/button_dialog_white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_marginBottom="@dimen/dp20"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="@dimen/dp48"
+            android:layout_height="@dimen/dp48"
+            android:layout_marginLeft="@dimen/dp5"
+            android:layout_marginTop="@dimen/dp5"
+            android:padding="@dimen/dp5"
+            android:src="@mipmap/ico_j_back" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp48"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dp5"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="校验会员账号"
+            android:textColor="@color/font_3"
+            android:textSize="@dimen/common_14" />
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp40"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/ev_phone"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp55"
+            android:layout_below="@id/tv_title"
+            android:background="@drawable/bg_line_gray2"
+            android:hint="请输入手机号"
+            android:textColorHint="@color/font_9"
+            android:textColor="@color/font_3"
+            android:padding="@dimen/dp5"
+            android:textSize="@dimen/font_16" />
+
+        <Button
+            android:id="@+id/btn_check"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp48"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dp30"
+            android:background="@drawable/bg_corner_theme"
+            android:text="校验"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_16" />
+
+        <!--<TextView-->
+            <!--android:id="@+id/btn_join_vip"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="@dimen/dp48"-->
+            <!--android:layout_centerHorizontal="true"-->
+            <!--android:layout_marginTop="@dimen/dp20"-->
+            <!--android:gravity="center_vertical|center_horizontal"-->
+            <!--android:text="加入会员"-->
+            <!--android:textColor="@color/orange"-->
+            <!--android:textSize="@dimen/font_16" />-->
+
+    </LinearLayout>
+
+
+</LinearLayout>

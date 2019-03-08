@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp35"
+        android:orientation="horizontal"
+        android:background="#49b3f2"
+        >
+
+        <TextView
+            android:id="@+id/single_time"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="挂单时间"
+            android:textSize="@dimen/font_20"
+            android:layout_gravity="center_vertical"
+            android:textColor="#ffffff"
+            android:layout_marginLeft="@dimen/dp16"
+            />
+
+        <TextView
+            android:id="@+id/single_price"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="挂单金额"
+            android:textSize="@dimen/font_20"
+            android:layout_gravity="center_vertical"
+            android:textColor="#ffffff"
+            android:gravity="center"
+            />
+
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/single_employee"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="营业员"
+            android:textSize="@dimen/font_20"
+            android:layout_gravity="center_vertical"
+            android:textColor="#ffffff"
+            android:gravity="center"
+            />
+    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp1"
+        android:background="@color/gray"
+        />
+
+    <ListView
+        android:id="@+id/single_left"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FAFAFA"
+        />
+
+</LinearLayout>
+

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/linearlayout_item"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginRight="@dimen/height_10"
+    android:minHeight="@dimen/dp60"
+    android:orientation="horizontal">
+
+    <View
+        android:id="@+id/select_line"
+        android:layout_width="@dimen/height_5"
+        android:layout_height="@dimen/dp40"
+        android:layout_gravity="center"
+        android:background="@color/red_color" />
+
+    <TextView
+        android:id="@+id/txt_menu_name"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/dp5"
+        android:gravity="center_vertical"
+        android:maxEms="6"
+        android:singleLine="true"
+        android:text="全部菜品全部"
+        android:textColor="@color/text_black"
+        android:textSize="@dimen/font_16" />
+</LinearLayout>

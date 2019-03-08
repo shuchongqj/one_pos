@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+      >
+
+        <TextView
+            android:id="@+id/text_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="@dimen/dp20"
+            android:layout_centerInParent="true"
+            android:text="起送价格配置"
+            android:textColor="@color/blue"
+            android:textSize="35sp" />
+
+        <ImageView
+            android:id="@+id/img_close"
+            android:layout_width="@dimen/dp48"
+            android:layout_height="@dimen/dp48"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/menu_close" />
+
+        <EditText
+            android:id="@+id/edit_device_money"
+            android:layout_width="240dp"
+            android:layout_height="65dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="171.5dp"
+            android:layout_marginTop="111dp"
+            android:background="@drawable/input_border"
+            android:gravity="center"
+            android:inputType="number"
+            android:text="0"
+            android:textColor="#4079FF"
+            android:textCursorDrawable="@drawable/input_oo"
+            android:textSize="35sp" />
+
+        <TextView
+            android:id="@+id/tv_font"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_below="@+id/edit_device_money"
+            android:layout_marginLeft="171.5dp"
+            android:text="注意：暂时只接受大于0的整数"
+            android:textColor="#666666"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="65dp"
+            android:layout_marginLeft="@dimen/dp5"
+            android:layout_marginTop="111dp"
+            android:layout_toRightOf="@+id/edit_device_money"
+            android:gravity="bottom"
+            android:text="元 起送"
+            android:textColor="#070707"
+            android:textSize="35sp" />
+
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/dp70"
+            android:background="@drawable/btn_blue"
+            android:gravity="center"
+            android:id="@+id/btn_submit"
+            android:text="保存设置"
+            android:textColor="@color/white"
+            android:textSize="24sp" />
+    </RelativeLayout>
+
+</LinearLayout>

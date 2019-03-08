@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/dp550"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@drawable/button_dialog_white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp20">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="@dimen/dp48"
+            android:layout_height="@dimen/dp48"
+            android:layout_marginLeft="@dimen/dp5"
+            android:layout_marginTop="@dimen/dp5"
+            android:padding="@dimen/dp5"
+            android:src="@mipmap/ico_j_back" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp48"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dp5"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="会员信息"
+            android:textColor="@color/font_3"
+            android:textSize="@dimen/common_14" />
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp40"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="会员姓名：场嘉峰"
+            android:textColor="@color/font_3"
+            android:textSize="@dimen/font_14" />
+
+        <TextView
+            android:id="@+id/tv_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp10"
+            android:text="会员姓名：场嘉峰"
+            android:textColor="@color/font_3"
+            android:textSize="@dimen/font_14" />
+
+        <TextView
+            android:id="@+id/tv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp10"
+            android:text="会员姓名：场嘉峰"
+            android:textColor="@color/font_3"
+            android:textSize="@dimen/font_14" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp10"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="会员余额："
+                android:textColor="@color/font_3"
+                android:textSize="@dimen/font_14" />
+
+            <TextView
+                android:id="@+id/tv_user_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="100元"
+                android:textColor="@color/red"
+                android:textSize="@dimen/font_14" />
+
+            <TextView
+                android:id="@+id/tv_user_money_tip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp40"
+                android:text=""
+                android:textColor="@color/font_3"
+                android:textSize="@dimen/font_14" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp30"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_in_money"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp48"
+                android:layout_below="@+id/ll_input"
+                android:layout_centerHorizontal="true"
+                android:layout_marginRight="@dimen/dp5"
+                android:layout_weight="1"
+                android:background="@drawable/bg_corner_orange"
+                android:text="充值"
+                android:textColor="@color/white"
+                android:textSize="@dimen/font_14" />
+
+            <Button
+                android:id="@+id/btn_pay"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp48"
+                android:layout_below="@+id/ll_input"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="@dimen/dp5"
+                android:layout_weight="1"
+                android:background="@drawable/bg_corner_theme"
+                android:text="确认扣款"
+                android:textColor="@color/white"
+                android:textSize="@dimen/font_14" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

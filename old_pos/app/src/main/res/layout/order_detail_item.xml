@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/dp5">
+        <TextView
+            android:id="@+id/item_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.5"
+            android:textSize="@dimen/font_16"
+            android:text="猪头汉堡"
+            android:layout_marginLeft="@dimen/dp10"/>
+        <TextView
+            android:gravity="center"
+            android:id="@+id/item_sun"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="@dimen/font_16"
+            android:text="x1"/>
+        <TextView
+            android:gravity="center"
+            android:id="@+id/item_money"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="@dimen/font_16"
+            android:text="￥88"/>
+        <TextView
+            android:gravity="center"
+            android:id="@+id/item_receiptQuantity"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="@dimen/font_16"
+            android:text="已收货：0"/>
+        <TextView
+            android:gravity="center"
+            android:id="@+id/item_deliveryQuantity"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="@dimen/font_16"
+            android:text="配送中：0"/>
+        <TextView
+            android:gravity="center"
+            android:id="@+id/item_notDeliveryQuantity"
+            android:textColor="@color/orange"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="@dimen/font_16"
+            android:text="未配送：1"/>
+
+    </LinearLayout>
+
+</LinearLayout>

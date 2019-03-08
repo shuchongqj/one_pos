@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.gzdb.basepos"
+    android:versionCode="10"
+    android:versionName="1.0">
+
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!--<uses-permission android:name="android.permission.WRITE_SETTINGS" />-->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!--<uses-permission android:name="android.permission.READ_LOGS" />-->
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!--<uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />-->
+
+    <!-- 显示系统窗口权限 -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.SYSTEM_OVERLAY_WINDOW" />
+
+    <!-- 蓝牙权限 -->
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+
+    <!-- Required -->
+    <permission
+        android:name="${applicationId}.permission.JPUSH_MESSAGE"
+        android:protectionLevel="signature" />
+
+    <!-- Required  一些系统要求的权限，如访问网络等 -->
+    <uses-permission android:name="${applicationId}.permission.JPUSH_MESSAGE" />
+    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <!-- Optional for location -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" /> <!-- 用于开启 debug 版本的应用在6.0 系统上 层叠窗口权限 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+
+
+    <application
+        android:name=".App"
+        android:allowBackup="true"
+        android:icon="@mipmap/icon"
+        android:label="${APP_NAME}"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:replace="label">
+
+        <!-- 以下是百度移动统计 -->
+        <!-- 您从百度网站获取的APP KEY -->
+        <meta-data
+            android:name="BaiduMobAd_STAT_ID"
+            android:value="e3c1e7e9f9" /> <!-- abcd1234 -->
+        <!-- e3c1e7e9f9 -->
+        <!-- 渠道商编号 -->
+        <meta-data
+            android:name="BaiduMobAd_CHANNEL"
+            android:value="BaiduMarket" />
+
+        <!-- 是否开启错误日志统计，默认为false -->
+        <meta-data
+            android:name="BaiduMobAd_EXCEPTION_LOG"
+            android:value="true" />
+        <!-- 日志发送策略，可选值：APP_START、ONCE_A_DAY、SET_TIME_INTERVAL，默认为APP_START -->
+        <meta-data
+            android:name="BaiduMobAd_SEND_STRATEGY"
+            android:value="APP_START" />
+        <!-- 日志发送策略 为SET_TIME_INTERVAL时，需设定时间间隔(取消下行注释)。取值为1-24的整数，默认为1 -->
+        <!-- <meta-data android:name="BaiduMobAd_TIME_INTERVAL" android:value="2" /> -->
+        <!-- 日志仅在wifi网络下发送，默认为false -->
+        <meta-data
+            android:name="BaiduMobAd_ONLY_WIFI"
+            android:value="false" />
+        <!-- 是否获取基站位置信息 ,默认为true -->
+        <meta-data
+            android:name="BaiduMobAd_CELL_LOCATION"
+            android:value="true" />
+        <!-- 是否获取GPS位置信息，默认为true -->
+        <meta-data
+            android:name="BaiduMobAd_GPS_LOCATION"
+            android:value="true" />
+        <!-- 是否获取WIFI位置信息，默认为true -->
+        <meta-data
+            android:name="BaiduMobAd_WIFI_LOCATION"
+            android:value="true" />
+        <!-- 以上是百度移动统计 -->
+
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="${BAIDU_API_KEY}" /> <!-- u5tvAeQDxa949UYXZysGk3GLawtxuCjv -->
+        <!-- qs5oEcaIvKsaKvUcylY7bCybmWB5sp2H -->
+
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote" />
+
+        <receiver android:name="com.gzdb.supermarket.receiver.MyBroadCastReceiver">
+            <intent-filter>
+                <action android:name="com.sunmi.hcservice" />
+                <action android:name="com.sunmi.hcservice.status" />
+            </intent-filter>
+        </receiver>
+
+        <!-- 登录 -->
+        <activity
+            android:name="com.gzdb.supermarket.LoginActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/SplashTheme"
+            android:windowSoftInputMode="stateHidden">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+                <!-- <category android:name="android.intent.category.HOME" /> -->
+                <!-- <category android:name="android.intent.category.DEFAULT" /> -->
+            </intent-filter>
+
+            <meta-data
+                android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"
+                android:resource="@xml/device_filter" />
+        </activity>
+
+        <!-- update 2016-05-09 超市版更新 -->
+        <activity
+            android:name="com.gzdb.supermarket.SupermarketIndexActivity"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.gzdb.supermarket.activity.DrapUpActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/dialog"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.gzdb.supermarket.PlaceOrderActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/dialog"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.gzdb.supermarket.activity.PayActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/dialog"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.gzdb.supermarket.SettlementActivity"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="com.gzdb.supermarket.activity.RechargeLogActivity"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="com.util.baidu.BaiduAddressActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="com.gzdb.supermarket.activity.AddItemActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/dialog"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.gzdb.supermarket.activity.AddItemTypeActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/dialog"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.gzdb.quickbuy.activity.QuickBuyActivity"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.gzdb.quickbuy.activity.QuickBuyPayActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/dialog"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.gzdb.quickbuy.activity.OrderBuyPayActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.gzdb.quickbuy.activity.OrderDetailActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.gzdb.supermarket.activity.SearchItemActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/dialog"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.gzdb.supermarket.activity.AddItemUnitActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/dialog"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.gzdb.vaservice.VASActivity"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustNothing|stateHidden" />
+        <activity
+            android:name="com.tencent.bugly.beta.ui.BetaActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize|locale"
+            android:theme="@android:style/Theme.Translucent" />
+
+        <!-- 商米配置 -->
+        <receiver android:name="sunmi.ds.MsgReceiver">
+            <intent-filter>
+                <action android:name="com.sunmi.hcservice" />
+                <action android:name="com.sunmi.hcservice.status" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name="com.gzdb.sunmi.activity.SendImgTextAct"
+            android:screenOrientation="landscape" />
+
+        <!-- ..............................................................................下面是极光相关配置 -->
+        <!-- Rich push 核心功能 since 2.0.6 -->
+        <activity
+            android:name="cn.jpush.android.ui.PopWinActivity"
+            android:exported="false"
+            android:theme="@style/MyDialogStyle" />
+
+        <!-- Required SDK核心功能 -->
+        <activity
+            android:name="cn.jpush.android.ui.PushActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:exported="false"
+            android:theme="@android:style/Theme.NoTitleBar">
+            <intent-filter>
+                <action android:name="cn.jpush.android.ui.PushActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="${applicationId}" />
+            </intent-filter>
+        </activity>
+
+        <!-- Required SDK 核心功能 -->
+        <!-- 可配置android:process参数将PushService放在其他进程中 -->
+        <service
+            android:name="cn.jpush.android.service.PushService"
+            android:exported="false"
+            android:process=":mult">
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.REGISTER" />
+                <action android:name="cn.jpush.android.intent.REPORT" />
+                <action android:name="cn.jpush.android.intent.PushService" />
+                <action android:name="cn.jpush.android.intent.PUSH_TIME" />
+            </intent-filter>
+        </service>
+
+        <!-- since 1.8.0 option 可选项。用于同一设备中不同应用的JPush服务相互拉起的功能。 -->
+        <!-- 若不启用该功能可删除该组件，将不拉起其他应用也不能被其他应用拉起 -->
+        <service
+            android:name="cn.jpush.android.service.DaemonService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.DaemonService" />
+
+                <category android:name="${applicationId}" />
+            </intent-filter>
+        </service>
+        <service android:name="com.gzdb.supermarket.MyService">
+            <intent-filter>
+                <action android:name="com.gzdb.supermarket.MyService" />
+            </intent-filter>
+        </service>
+
+        <!-- Required SDK核心功能 -->
+        <receiver
+            android:name="cn.jpush.android.service.PushReceiver"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter android:priority="1000">
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY" /> <!-- Required  显示通知栏 -->
+                <category android:name="${applicationId}" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.USER_PRESENT" />
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+            <!-- Optional -->
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_ADDED" />
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.gzdb.supermarket.MyBroadcastReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+            </intent-filter>
+        </receiver>
+        <!-- Required SDK核心功能 -->
+        <receiver
+            android:name="cn.jpush.android.service.AlarmReceiver"
+            android:exported="false" />
+
+        <!-- User defined.  For test only  用户自定义的广播接收器 -->
+        <receiver
+            android:name="com.gzdb.jpush.MyReceiver"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.REGISTRATION" /> <!-- Required  用户注册SDK的intent -->
+                <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED" /> <!-- Required  用户接收SDK消息的intent -->
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED" /> <!-- Required  用户接收SDK通知栏信息的intent -->
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED" /> <!-- Required  用户打开自定义通知栏的intent -->
+                <action android:name="cn.jpush.android.intent.CONNECTION" /> <!-- 接收网络变化 连接/断开 since 1.6.3 -->
+                <category android:name="${applicationId}" />
+            </intent-filter>
+        </receiver>
+
+        <!-- User defined.  For test only  用户自定义接收消息器,3.0.7开始支持,目前新tag/alias接口设置结果会在该广播接收器对应的方法中回调 -->
+        <receiver android:name="com.gzdb.jpush.MyJPushMessageReceiver">
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.RECEIVE_MESSAGE" />
+
+                <category android:name="${applicationId}" />
+            </intent-filter>
+        </receiver>
+        <!-- <service -->
+        <!-- android:name="com.gprinter.service.GpPrintService" -->
+        <!-- android:enabled="true" -->
+        <!-- android:exported="true" -->
+        <!-- android:label="GpPrintService"> -->
+        <!-- <intent-filter> -->
+        <!-- <action android:name="com.gprinter.aidl.GpPrintService" /> -->
+        <!-- </intent-filter> -->
+        <!-- </service> -->
+        <!-- <service android:name="com.gprinter.service.AllService" /> -->
+
+
+        <!-- Required  . Enable it you can get statistics data with channel -->
+        <meta-data
+            android:name="JPUSH_CHANNEL"
+            android:value="developer-default" />
+        <meta-data
+            android:name="JPUSH_APPKEY"
+            android:value="${JPUSH_KEY}" /> <!-- </>值来自开发者平台取得的AppKey -->
+
+
+        <!-- Bugly -->
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${applicationId}.fileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+        <!-- 友盟 -->
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="595ef6ae99f0c77d680018ee" />
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="YunPos" />
+
+        <activity
+            android:name="com.gzdb.sale.activity.SaleActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name="com.gzdb.sale.activity.SaleTypeActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name="com.gzdb.sale.activity.EditSaleActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name="com.gzdb.sale.activity.SelectProductActivity"
+            android:screenOrientation="landscape" />
+        <activity android:name="com.gzdb.yct.YctActivity" />
+        <activity
+            android:name="com.gzdb.vaservice.YctRecordActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name="com.gzdb.supermarket.activity.EditItemActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/dialog"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.gzdb.supermarket.activity.ItemManageActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name="com.gzdb.supermarket.activity.SetupActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name="com.gzdb.supermarket.activity.ReportActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name="com.gzdb.mall.activity.ClauseActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name="com.gzdb.mall.activity.ApplyStatusActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name="com.gzdb.mall.activity.MallOrderDetailActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name="com.gzdb.mall.activity.MallActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name="com.gzdb.mall.activity.SysProductActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name="com.gzdb.mall.activity.MallProductDetailActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name="com.gzdb.supermarket.activity.AddProductActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/dialog_style"
+            android:windowSoftInputMode="stateHidden" />
+        <activity android:name="com.gzdb.fresh.activity.FreshActivity"></activity>
+        <activity android:name="com.gzdb.fresh.activity.FreshOrderDetailActivity"></activity>
+    </application>
+
+</manifest>

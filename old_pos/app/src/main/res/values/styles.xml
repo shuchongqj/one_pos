@@ -1,0 +1,187 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="SplashTheme" parent="AppTheme">
+        <!-- Customize your theme here. -->
+        <item name="android:windowBackground">@mipmap/ad</item>
+    </style>
+
+    <style name="Dialog" parent="android:style/Theme.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFrame">@null</item>
+        <!-- 边框 -->
+        <item name="android:windowIsFloating">true</item>
+        <!-- 是否浮现在activity之上 -->
+        <item name="android:windowIsTranslucent">true</item>
+        <!-- 半透明 -->
+        <item name="android:background">@android:color/transparent</item>
+        <!-- 背景透明 -->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!-- 背景透明 -->
+        <item name="android:backgroundDimEnabled">true</item>
+        <!-- 蒙版- 模糊 -->
+    </style>
+
+    <style name="AnimationFade">
+        <item name="android:windowEnterAnimation">@anim/in_lefttoright</item>
+        <item name="android:windowExitAnimation">@anim/out_righttoleft</item>
+    </style>
+
+    <!--<style name="MyDialogStyle">-->
+    <!--<item name="android:windowBackground">@android:color/transparent</item>-->
+    <!--<item name="android:windowFrame">@null</item>-->
+    <!--<item name="android:windowNoTitle">true</item>-->
+    <!--<item name="android:windowIsFloating">true</item>-->
+    <!--<item name="android:windowIsTranslucent">true</item>-->
+    <!--<item name="android:windowContentOverlay">@null</item>-->
+    <!--<item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>-->
+    <!--<item name="android:backgroundDimEnabled">true</item>-->
+    <!--</style>-->
+    <!-- 横向的线条的样式 -->
+    <style name="view_horizontal">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0.2dp</item>
+        <item name="android:background">@color/gray2</item>
+    </style>
+
+    <!-- 自定义dialog -->
+    <style name="DialogWindowTitle">
+        <item name="android:textSize">22sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <!-- Activity Dialog  -->
+    <style name="dialog">
+        <!-- 去黑边 -->
+        <item name="android:windowFrame">@null</item>
+        <!-- 设置是否可滑动 -->
+        <item name="android:windowIsFloating">true</item>
+        <!-- 设置是否透明 -->
+        <item name="android:windowIsTranslucent">true</item>
+        <!-- 无标题 -->
+        <item name="android:windowNoTitle">true</item>
+        <!-- 背景 -->
+        <item name="android:background">@null</item>
+        <!-- 窗口背景 -->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!-- 是否变暗 -->
+        <item name="android:backgroundDimEnabled">true</item>
+        <!-- 点击空白部分activity不消失 -->
+        <item name="android:windowCloseOnTouchOutside">false</item>
+    </style>
+
+    <style name="line_1">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">#cccccc</item>
+    </style>
+
+    <style name="line_2">
+        <item name="android:layout_width">1dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">#cccccc</item>
+    </style>
+
+    <style name="MEditText">
+
+        <item name="android:background">@drawable/shape_edit_bg</item>
+
+        <item name="android:textSize">@dimen/font_18</item>
+
+        <item name="android:textColor">@color/font_3</item>
+
+        <item name="android:layout_height">@dimen/dp48</item>
+
+        <item name="android:layout_width">wrap_content</item>
+
+        <item name="android:textColorHint">@color/font_hint</item>
+
+    </style>
+
+    <style name="MTextView">
+
+        <item name="android:textSize">@dimen/font_14</item>
+
+        <item name="android:textColor">@color/font_3</item>
+
+        <item name="android:layout_height">wrap_content</item>
+
+        <item name="android:layout_width">wrap_content</item>
+
+    </style>
+
+    <!-- 自定义仿IOS的AlertDialog的样式 -->
+    <style name="Alert_Dialog_Style" parent="@android:style/Theme.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+    <declare-styleable name="EditText">
+        <!-- 总共输入长度 -->
+        <attr name="totalLength" format="integer" />
+        <!-- 每组的长度 -->
+        <attr name="eachLength" format="integer" />
+        <!-- 分隔符 -->
+        <attr name="delimiter" format="string" />
+        <!-- 占位符 -->
+        <attr name="placeHolder" format="string" />
+    </declare-styleable>
+
+    <style name="menu_text_name">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">#ffffff</item>
+    </style>
+
+    <style name="menu_text_value">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">#ffda59</item>
+    </style>
+
+    <style name="TabLayoutTextSizeStyle" parent="TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse">
+        <item name="android:textSize">@dimen/dp20</item>
+    </style>
+
+    <style name="dialog_style" parent="Theme.AppCompat.Dialog">
+
+        <!-- 去黑边 -->
+        <item name="android:windowFrame">@null</item>
+        <!-- 设置是否可滑动 -->
+        <item name="android:windowIsFloating">true</item>
+        <!-- 设置是否透明 -->
+        <item name="android:windowIsTranslucent">true</item>
+        <!-- 无标题 -->
+        <item name="android:windowNoTitle">true</item>
+        <!-- 背景 -->
+        <item name="android:background">@null</item>
+        <!-- 窗口背景 -->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!-- 是否变暗 -->
+        <item name="android:backgroundDimEnabled">true</item>
+        <!-- 点击空白部分activity不消失 -->
+        <item name="android:windowCloseOnTouchOutside">false</item>
+    </style>
+
+
+    <!-- TabLayout样式 -->
+    <style name="TabLayoutStyle" parent="Widget.Design.TabLayout">
+        <item name="tabIndicatorColor">@color/colorPrimary</item>
+        <item name="tabSelectedTextColor">@color/colorPrimary</item>
+        <item name="tabTextAppearance">@style/TabTextAppearence</item>
+        <item name="tabPaddingEnd">0dp</item>
+    </style>
+    <style name="TabTextAppearence" parent="TextAppearance.Design.Tab">
+    <item name="android:textSize">16sp</item>
+    <item name="textAllCaps">false</item>
+    </style>
+
+
+</resources>

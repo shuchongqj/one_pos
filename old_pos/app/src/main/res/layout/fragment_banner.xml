@@ -1,0 +1,227 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp10"
+        android:layout_marginBottom="@dimen/dp10">
+
+        <TextView
+            android:id="@+id/aa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="分屏Banner图设置"
+            android:paddingLeft="@dimen/dp20"
+            android:textColor="#000000"
+            android:textSize="@dimen/font_20" />
+
+        <ImageView
+            android:visibility="visible"
+            android:id="@+id/close_btn"
+            android:layout_width="@dimen/dp30"
+            android:layout_height="@dimen/dp30"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="@dimen/dp20"
+            android:src="@mipmap/btn_close" />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_line1"
+        android:background="#cccccc"/>
+
+
+
+    <LinearLayout
+        android:padding="@dimen/dp20"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp20"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="时间间隔："
+            android:textSize="@dimen/font_18" />
+
+        <EditText
+            android:id="@+id/edit"
+            android:layout_width="@dimen/dp300"
+            android:layout_height="@dimen/dp40"
+            android:digits="0123456789"
+            android:inputType="number"
+            android:background="@drawable/bg_line_gray"
+            android:hint="默认10秒轮翻一次"
+            android:paddingLeft="@dimen/dp10"
+            android:textColorHint="#cccccc"
+            android:layout_marginLeft="@dimen/dp5"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="秒"
+            android:textSize="@dimen/font_15"
+            android:layout_marginLeft="@dimen/dp8"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:padding="@dimen/dp20"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="选择添加图片：("
+            android:textSize="@dimen/font_18" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="图片规格：1024px *600px，小于1M，最多选择5张"
+            android:textSize="@dimen/font_15"
+            android:textColor="#ff0000"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=")"
+            android:textSize="@dimen/font_15"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:padding="@dimen/dp20"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageView
+            android:id="@+id/send2"
+            android:layout_width="@dimen/dp100"
+            android:layout_height="@dimen/dp100"
+            android:src="@mipmap/addimg"
+            android:visibility="visible"/>
+
+        <RelativeLayout
+            android:visibility="gone"
+            android:id="@+id/ry_one"
+            android:layout_width="@dimen/dp100"
+            android:layout_height="@dimen/dp100">
+            <ImageView
+                android:id="@+id/img_one"
+                android:layout_width="@dimen/dp100"
+                android:layout_height="@dimen/dp100"
+                android:visibility="visible"/>
+            <ImageView
+                android:id="@+id/de_img_one"
+                android:layout_width="@dimen/dp20"
+                android:layout_height="@dimen/dp20"
+                android:src="@mipmap/delete_red"
+                android:visibility="visible"
+                android:layout_alignParentRight="true"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:visibility="gone"
+            android:id="@+id/ry_two"
+            android:layout_width="@dimen/dp100"
+            android:layout_height="@dimen/dp100"
+            android:layout_marginLeft="@dimen/dp10">
+            <ImageView
+                android:id="@+id/img_two"
+                android:layout_width="@dimen/dp100"
+                android:layout_height="@dimen/dp100"
+                android:visibility="visible"
+                android:layout_marginLeft="@dimen/dp5"/>
+            <ImageView
+                android:id="@+id/de_img_two"
+                android:layout_width="@dimen/dp20"
+                android:layout_height="@dimen/dp20"
+                android:src="@mipmap/delete_red"
+                android:visibility="visible"
+                android:layout_alignParentRight="true"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:visibility="gone"
+            android:id="@+id/ry_three"
+            android:layout_width="@dimen/dp100"
+            android:layout_height="@dimen/dp100"
+            android:layout_marginLeft="@dimen/dp10">
+            <ImageView
+                android:id="@+id/img_three"
+                android:layout_width="@dimen/dp100"
+                android:layout_height="@dimen/dp100"
+                android:visibility="visible"
+                android:layout_marginLeft="@dimen/dp5"/>
+            <ImageView
+                android:id="@+id/de_img_three"
+                android:layout_width="@dimen/dp20"
+                android:layout_height="@dimen/dp20"
+                android:src="@mipmap/delete_red"
+                android:visibility="visible"
+                android:layout_alignParentRight="true"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:visibility="gone"
+            android:id="@+id/ry_four"
+            android:layout_width="@dimen/dp100"
+            android:layout_height="@dimen/dp100"
+            android:layout_marginLeft="@dimen/dp10">
+            <ImageView
+                android:id="@+id/img_four"
+                android:layout_width="@dimen/dp100"
+                android:layout_height="@dimen/dp100"
+                android:visibility="visible"
+                android:layout_marginLeft="@dimen/dp5"/>
+            <ImageView
+                android:id="@+id/de_img_four"
+                android:layout_width="@dimen/dp20"
+                android:layout_height="@dimen/dp20"
+                android:src="@mipmap/delete_red"
+                android:visibility="visible"
+                android:layout_alignParentRight="true"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:visibility="gone"
+            android:id="@+id/ry_five"
+            android:layout_width="@dimen/dp100"
+            android:layout_height="@dimen/dp100"
+            android:layout_marginLeft="@dimen/dp10">
+            <ImageView
+                android:id="@+id/img_five"
+                android:layout_width="@dimen/dp100"
+                android:layout_height="@dimen/dp100"
+                android:visibility="visible"
+                android:layout_marginLeft="@dimen/dp5"/>
+            <ImageView
+                android:id="@+id/de_img_five"
+                android:layout_width="@dimen/dp20"
+                android:layout_height="@dimen/dp20"
+                android:src="@mipmap/delete_red"
+                android:visibility="visible"
+                android:layout_alignParentRight="true"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/send_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp30"
+        android:background="@drawable/bg_nomal_blue"
+        android:text="保存"
+        android:textColor="#ffffff"
+        android:textSize="@dimen/font_18"
+        android:layout_marginLeft="@dimen/dp320"/>
+</LinearLayout>
