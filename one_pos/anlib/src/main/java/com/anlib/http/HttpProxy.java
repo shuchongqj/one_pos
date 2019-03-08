@@ -121,7 +121,7 @@ public class HttpProxy extends AbsCallback implements Runnable {
                 return null;
             }
         } else {
-            return json.getString("data");
+            return json.getString("response");
         }
     }
 
@@ -134,7 +134,7 @@ public class HttpProxy extends AbsCallback implements Runnable {
                 return null;
             }
         } else {
-            return json.getJSONObject("data");
+            return json.getJSONObject("response");
         }
     }
 

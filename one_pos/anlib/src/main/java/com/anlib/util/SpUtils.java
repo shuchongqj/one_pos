@@ -13,8 +13,15 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class SpUtils {
 
+    public static final String DEFAULT = "sp_info";
+    public String preName;
     private SharedPreferences appShared;// 用于保存应用内部数据
     private SharedPreferences.Editor appEditor; // 编辑appShared中的数据
+
+    private SpUtils(String name)
+    {
+        preName = name;
+    }
 
     public void init(Context context, String name) {
         appShared = context.getSharedPreferences(name, MODE_PRIVATE);
@@ -42,4 +49,5 @@ public class SpUtils {
         }
         return null;
     }
+
 }

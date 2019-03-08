@@ -1,0 +1,157 @@
+<resources>
+    <dimen name="height_1">1dp</dimen>
+    <dimen name="height_5">6dp</dimen>
+    <dimen name="height_10">11dp</dimen>
+    <dimen name="height_20">22dp</dimen>
+    <dimen name="height_25">28dp</dimen>
+    <dimen name="height_30">33dp</dimen>
+    <dimen name="height_35">39dp</dimen>
+    <dimen name="height_40">44dp</dimen>
+    <dimen name="height_45">50dp</dimen>
+    <dimen name="height_46">51dp</dimen>
+    <dimen name="height_50">56dp</dimen>
+    <dimen name="height_60">67dp</dimen>
+    <dimen name="height_65">72dp</dimen>
+    <dimen name="height_100">111dp</dimen>
+    <dimen name="height_120">133dp</dimen>
+    <dimen name="height_title">62dp</dimen>
+    <dimen name="height_line">1dp</dimen>
+    <dimen name="height_line1">1dp</dimen>
+
+    <dimen name="width_150">167dp</dimen>
+
+    <dimen name="font_10">11sp</dimen>
+    <dimen name="font_12">13sp</dimen>
+    <dimen name="font_14">16sp</dimen>
+    <dimen name="font_15">17sp</dimen>
+    <dimen name="font_16">18sp</dimen>
+    <dimen name="font_18">20sp</dimen>
+    <dimen name="font_20">22sp</dimen>
+    <dimen name="font_21">23sp</dimen>
+    <dimen name="font_22">24sp</dimen>
+    <dimen name="font_24">27sp</dimen>
+    <dimen name="font_26">29sp</dimen>
+    <dimen name="font_28">31sp</dimen>
+    <dimen name="font_30">33sp</dimen>
+
+    <dimen name="margin_100">111dp</dimen>
+    <dimen name="margin_55">61dp</dimen>
+    <dimen name="margin_50">56dp</dimen>
+    <dimen name="margin_42">47dp</dimen>
+    <dimen name="margin_30">33dp</dimen>
+    <dimen name="margin_28">31dp</dimen>
+    <dimen name="margin_25">28dp</dimen>
+    <dimen name="margin_20">22dp</dimen>
+    <dimen name="margin_18">20dp</dimen>
+    <dimen name="margin_15">17dp</dimen>
+    <dimen name="margin_12">13dp</dimen>
+    <dimen name="margin_10">11dp</dimen>
+    <dimen name="margin_5">6dp</dimen>
+    <dimen name="margin_3">3dp</dimen>
+    <dimen name="margin_2">2dp</dimen>
+
+    <dimen name="dp1">1dp</dimen>
+    <dimen name="dp2">2dp</dimen>
+    <dimen name="dp3">3dp</dimen>
+    <dimen name="dp4">4dp</dimen>
+    <dimen name="dp5">6dp</dimen>
+    <dimen name="dp6">7dp</dimen>
+    <dimen name="dp7">8dp</dimen>
+    <dimen name="dp8">9dp</dimen>
+    <dimen name="dp9">10dp</dimen>
+    <dimen name="dp10">11dp</dimen>
+    <dimen name="dp11">12dp</dimen>
+    <dimen name="dp12">13dp</dimen>
+    <dimen name="dp13">14dp</dimen>
+    <dimen name="dp14">16dp</dimen>
+    <dimen name="dp15">17dp</dimen>
+    <dimen name="dp16">18dp</dimen>
+    <dimen name="dp17">19dp</dimen>
+    <dimen name="dp18">20dp</dimen>
+    <dimen name="dp19">21dp</dimen>
+    <dimen name="dp20">22dp</dimen>
+    <dimen name="dp21">23dp</dimen>
+    <dimen name="dp22">24dp</dimen>
+    <dimen name="dp23">26dp</dimen>
+    <dimen name="dp24">27dp</dimen>
+    <dimen name="dp25">28dp</dimen>
+    <dimen name="dp26">29dp</dimen>
+    <dimen name="dp27">30dp</dimen>
+    <dimen name="dp28">31dp</dimen>
+    <dimen name="dp29">32dp</dimen>
+    <dimen name="dp30">33dp</dimen>
+    <dimen name="dp31">34dp</dimen>
+    <dimen name="dp32">36dp</dimen>
+    <dimen name="dp35">39dp</dimen>
+    <dimen name="dp36">40dp</dimen>
+    <dimen name="dp38">42dp</dimen>
+    <dimen name="dp40">44dp</dimen>
+    <dimen name="dp42">47dp</dimen>
+    <dimen name="dp45">50dp</dimen>
+    <dimen name="dp46">51dp</dimen>
+    <dimen name="dp47">52dp</dimen>
+    <dimen name="dp48">53dp</dimen>
+    <dimen name="dp50">56dp</dimen>
+    <dimen name="dp55">61dp</dimen>
+    <dimen name="dp59">65dp</dimen>
+    <dimen name="dp60">67dp</dimen>
+    <dimen name="dp65">72dp</dimen>
+    <dimen name="dp70">78dp</dimen>
+    <dimen name="dp74">82dp</dimen>
+    <dimen name="dp80">89dp</dimen>
+    <dimen name="dp85">94dp</dimen>
+    <dimen name="dp90">100dp</dimen>
+    <dimen name="dp100">111dp</dimen>
+    <dimen name="dp120">133dp</dimen>
+    <dimen name="dp125">139dp</dimen>
+    <dimen name="dp130">144dp</dimen>
+    <dimen name="dp150">167dp</dimen>
+    <dimen name="dp180">200dp</dimen>
+    <dimen name="dp190">211dp</dimen>
+    <dimen name="dp200">222dp</dimen>
+    <dimen name="dp220">244dp</dimen>
+    <dimen name="dp230">255dp</dimen>
+    <dimen name="dp240">266dp</dimen>
+    <dimen name="dp250">278dp</dimen>
+    <dimen name="dp280">311dp</dimen>
+    <dimen name="dp300">333dp</dimen>
+    <dimen name="dp320">355dp</dimen>
+    <dimen name="dp350">389dp</dimen>
+    <dimen name="dp380">422dp</dimen>
+    <dimen name="dp400">444dp</dimen>
+    <dimen name="dp460">511dp</dimen>
+    <dimen name="dp480">533dp</dimen>
+    <dimen name="dp500">555dp</dimen>
+    <dimen name="dp550">611dp</dimen>
+    <dimen name="dp600">666dp</dimen>
+    <dimen name="dp650">722dp</dimen>
+    <dimen name="dp740">821dp</dimen>
+    <dimen name="dp580">644dp</dimen>
+    <dimen name="dp800">888dp</dimen>
+    <dimen name="dp1000">1110dp</dimen>
+
+
+
+
+
+
+
+    <dimen name="m80">89dp</dimen>
+    <dimen name="m85">94dp</dimen>
+    <dimen name="m100">111dp</dimen>
+    <dimen name="m150">167dp</dimen>
+    <dimen name="m500">555dp</dimen>
+    <dimen name="m190">211dp</dimen>
+    <dimen name="m320">355dp</dimen>
+    <dimen name="m800">888dp</dimen>
+    <dimen name="m850">944dp</dimen>
+
+    <dimen name="shadow_width">17dp</dimen>
+    <dimen name="slidingmenu_offset">999dp</dimen>
+    <dimen name="slidingmenu_right">888dp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">18dp</dimen>
+    <dimen name="activity_vertical_margin">18dp</dimen>
+    <dimen name="dp160">178dp</dimen>
+</resources>
+

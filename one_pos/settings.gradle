@@ -1,1 +1,1 @@
-include ':app', ':anlib'
+include ':app', ':anlib', ':turbo-recyclerview'

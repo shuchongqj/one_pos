@@ -69,6 +69,10 @@
         </service>
         <service android:name="com.gprinter.service.AllService"></service>
 
+        <activity android:name=".menubar.activity.VASActivity"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustNothing|stateHidden" />
+
         <service
             android:name=".service.test.ForegroundService"
             android:exported="true"
