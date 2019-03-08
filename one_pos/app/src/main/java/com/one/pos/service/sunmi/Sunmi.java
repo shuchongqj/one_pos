@@ -3,16 +3,17 @@ package com.one.pos.service.sunmi;
 import android.content.Context;
 
 
-import java.util.List;
+import com.one.pos.service.sunmi.bluetooth.SunmiBluetoothPrint;
 
 /**
  * 商米服务
+ * 商米POS机，直接用本机的蓝牙协议连接本机打印机进行打印
  *
  * @author zhumg
  */
 public class Sunmi {
 
-    private static PrintManager printManager;
+    private static SunmiBluetoothPrint bPrintManager;
 
     /**
      * 初始化
@@ -20,21 +21,21 @@ public class Sunmi {
      * @param context
      */
     public static void init(Context context) {
-        printManager = new PrintManager(context);
+        bPrintManager = new SunmiBluetoothPrint(context);
     }
 
     /**
      * 退出
      */
     public static void onExit() {
-        printManager.exit();
+        bPrintManager.close();
     }
 
     /**
      * 打印内容
      */
     public static void print(PrintTask task) {
-        printManager.print(task);
+        bPrintManager.sendDatas(task);
     }
 
     /**

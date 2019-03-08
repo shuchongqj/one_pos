@@ -18,7 +18,7 @@ public class TestAdapter extends AbstractListAdapter<String> {
     }
 
     @Override
-    public int getViewType(int position) {
+    public int getViewResId(int position) {
         return R.layout.adapter_test;
     }
 

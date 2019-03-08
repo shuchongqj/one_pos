@@ -15,12 +15,12 @@
 
         <TextView
             android:id="@+id/tv_title"
-            android:text="温馨提示"
+            android:text="溫馨提示"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:gravity="center_vertical|center_horizontal"
             android:textColor="@color/font_6"
-            android:textSize="16sp" />
+            android:textSize="@dimen/common_16" />
 
         <View
             android:id="@+id/tv_title_g"
@@ -30,18 +30,20 @@
 
         <RelativeLayout
             android:id="@+id/contentPanel"
-            android:padding="20dp"
             android:layout_width="match_parent"
-            android:minHeight="100dp"
             android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/tv_message"
-                android:text=""
+                android:text="現在也開了，只是放很少錢現在也開了，只是放很少錢現在也開了，只是放很少錢現在也開了，只是放很少錢現在也開了，只是放很少錢現在也開了，只是放很少錢"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:textSize="14sp"
+                android:layout_marginBottom="30dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:padding="15dp"
+                android:textColor="@color/font_3"
+                android:textSize="@dimen/font_size_14"
                 android:layout_centerInParent="false"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true" />
@@ -49,7 +51,6 @@
         </RelativeLayout>
 
         <View
-            android:id="@+id/btn_top_g"
             android:layout_width="match_parent"
             android:layout_height="1px"
             android:background="@color/line_d4" />
@@ -68,12 +69,12 @@
                 android:gravity="center"
                 android:text="取消"
                 android:textColor="@color/font_6"
-                android:textSize="16sp" />
+                android:textSize="@dimen/common_16" />
 
             <View
                 android:id="@+id/tig"
                 android:layout_width="1px"
-                android:layout_height="match_parent"
+                android:layout_height="25dp"
                 android:layout_gravity="center"
                 android:background="@color/line_d4" />
 
@@ -85,7 +86,7 @@
                 android:gravity="center"
                 android:text="确定"
                 android:textColor="@color/font_6"
-                android:textSize="16sp" />
+                android:textSize="@dimen/common_16" />
         </LinearLayout>
     </LinearLayout>
 

@@ -22,7 +22,7 @@ public class CartAdapter extends AbstractListAdapter<CartModel> {
     }
 
     @Override
-    public int getViewType(int position) {
+    public int getViewResId(int position) {
         return 0;
     }
 

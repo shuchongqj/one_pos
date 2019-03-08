@@ -53,13 +53,13 @@ public abstract class AbstractListAdapter<DATA> extends BaseAdapter implements A
     }
 
     public void clearAndRefresh(List<DATA> models) {
+        this.datas.clear();
         this.refresh(models);
         this.notifyDataSetChanged();
     }
 
 
     public void refresh(List<DATA> models) {
-        this.datas.clear();
         if (models != null && models.size() > 0) {
             this.datas.addAll(models);
         }
@@ -113,7 +113,7 @@ public abstract class AbstractListAdapter<DATA> extends BaseAdapter implements A
      * @param position
      * @return
      */
-    public abstract int getViewType(int position);
+    public abstract int getViewResId(int position);
 
     /**
      *
@@ -123,7 +123,7 @@ public abstract class AbstractListAdapter<DATA> extends BaseAdapter implements A
      * @return
      */
     public BaseAdapterHolder<DATA> createHolder(View view, DATA data, int viewType) {
-        return new BaseAdapterHolder(view);
+        return new BaseAdapterHolder(view, data, viewType);
     }
 
     /**
@@ -139,17 +139,17 @@ public abstract class AbstractListAdapter<DATA> extends BaseAdapter implements A
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         DATA data = getItem(position);
-        int viewType = getViewType(position);
+        int viewResId = getViewResId(position);
         BaseAdapterHolder holder = null;
         if (convertView == null) {
-            convertView = View.inflate(context, viewType, null);
-            holder = createHolder(convertView, data, viewType);
+            convertView = View.inflate(context, viewResId, null);
+            holder = createHolder(convertView, data, viewResId);
             convertView.setTag(holder);
         } else {
             holder = (BaseAdapterHolder) convertView.getTag();
         }
         int p = position - index_start;
-        refreshData(holder, convertView, data, viewType, p);
+        refreshData(holder, convertView, data, viewResId, p);
         return convertView;
     }
 

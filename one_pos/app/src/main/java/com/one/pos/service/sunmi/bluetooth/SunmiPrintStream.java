@@ -1,10 +1,10 @@
-package com.one.pos.service.sunmi;
+package com.one.pos.service.sunmi.bluetooth;
 
 
 /**
  * @author zhumg
  */
-public class PrintOutputStream {
+public class SunmiPrintStream {
 
     public static final byte ESC = 27;// 换码
     public static final byte FS = 28;// 文本分隔符
@@ -40,7 +40,7 @@ public class PrintOutputStream {
         }
     }
 
-    public PrintOutputStream underLine(int size) {
+    public SunmiPrintStream underLine(int size) {
         writeByte(ESC);
         writeByte((byte) 45);
         writeByte((byte) size);
@@ -48,40 +48,40 @@ public class PrintOutputStream {
     }
 
 
-    public PrintOutputStream clearUnderLine() {
+    public SunmiPrintStream clearUnderLine() {
         underLine(0);
         return this;
     }
 
-    public PrintOutputStream nullLine(int count) {
+    public SunmiPrintStream nullLine(int count) {
         for (int i = 0; i < count; i++) {
             writeByte(LF);
         }
         return this;
     }
 
-    public PrintOutputStream align(int align) {
+    public SunmiPrintStream align(int align) {
         writeByte(ESC);
         writeByte((byte) 97);
         writeByte((byte) align);
         return this;
     }
 
-    public PrintOutputStream boldOn() {
+    public SunmiPrintStream boldOn() {
         writeByte(ESC);
         writeByte((byte) 69);
         writeByte((byte) 0xF);
         return this;
     }
 
-    public PrintOutputStream boldOff() {
+    public SunmiPrintStream boldOff() {
         writeByte(ESC);
         writeByte((byte) 69);
         writeByte((byte) 0);
         return this;
     }
 
-    public PrintOutputStream fontSize(int fontSize) {
+    public SunmiPrintStream fontSize(int fontSize) {
         byte realSize = 0;
         if (fontSize == 1) {
             writeByte(ESC);
@@ -119,7 +119,7 @@ public class PrintOutputStream {
         return this;
     }
 
-    public PrintOutputStream clip() {
+    public SunmiPrintStream clip() {
         writeByte(GS);
         writeByte((byte) 86);
         writeByte((byte) 66);
@@ -127,7 +127,7 @@ public class PrintOutputStream {
         return this;
     }
 
-    public PrintOutputStream writeBytes(byte[] ds) {
+    public SunmiPrintStream writeBytes(byte[] ds) {
         updateIndex(ds.length);
         System.arraycopy(ds, 0, datas, index, ds.length);
         index += ds.length;
