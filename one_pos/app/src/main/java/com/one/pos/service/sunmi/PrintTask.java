@@ -2,19 +2,22 @@ package com.one.pos.service.sunmi;
 
 import com.anlib.util.LogUtils;
 import com.anlib.util.StringUtils;
+import com.one.pos.service.device.bluetooth.BluetoothPrintData;
+import com.one.pos.service.sunmi.bluetooth.SunmiPrintStream;
 
 import java.util.List;
 
 /**
  * @author zhumg
  */
-public class PrintTask {
+public class PrintTask extends BluetoothPrintData {
 
     //打印次数
     private int count;
     //打印指令列表
     private List<PrintComm> printComms;
-    //数据内容
+
+    //数据
     private byte[] datas;
 
     public PrintTask(List<PrintComm> printComms) {
@@ -27,19 +30,25 @@ public class PrintTask {
         this.count = count;
     }
 
+    @Override
     public int getCount() {
         return count;
     }
 
-    public byte[] getPrintDatas() {
+    @Override
+    protected byte[] getDatas() {
         if (datas == null) {
-            //解释并生成datas
-            this.datas = changeToData();
+            datas = changeToData(printComms);
         }
         return datas;
     }
 
-    private byte[] changeToData() {
+    public List<PrintComm> getPrintComms() {
+        return printComms;
+    }
+
+
+    public static byte[] changeToData(List<PrintComm> printComms) {
 //
 //        byte[] next2Line = ESCUtil.nextLine(2);//空两行
 //        byte[] boldOn = ESCUtil.boldOn();//加粗
@@ -87,8 +96,7 @@ public class PrintTask {
 //            return null;
 //        }
 
-
-        PrintOutputStream outputStream = new PrintOutputStream();
+        SunmiPrintStream outputStream = new SunmiPrintStream();
 
         //打印列表
         for (int i = 0; i < printComms.size(); i++) {
@@ -146,80 +154,5 @@ public class PrintTask {
         outputStream.clip();
 
         return outputStream.toDatas();
-
-//        List<byte[]> list = new ArrayList<>();
-//        for (int i = 0; i < printComms.size(); i++) {
-//            byte[] targets = toDatas(printComms.get(i));
-//            if (targets == null) {
-//                continue;
-//            }
-//            list.add(targets);
-//        }
-//        return listToBytes(list);
     }
-
-//    private byte[] listToBytes(List<byte[]> list) {
-//        int length = 0;
-//        for (int i = 0; i < list.size(); i++) {
-//            length = length + list.get(i).length;
-//        }
-//        byte[] newDatas = new byte[length];
-//        int index = 0;
-//        for (int i = 0; i < list.size(); i++) {
-//            byte[] targets = list.get(i);
-//            System.arraycopy(newDatas, index, targets, 0, targets.length);
-//            index += targets.length;
-//        }
-//        return newDatas;
-//    }
-//
-//    public byte[] toDatas(PrintComm comm) {
-//
-//        int commType = comm.getCommType();
-//        int fontSize = comm.getFontSize();
-//
-//        if (commType == PrintComm.COMM_TEXT) {
-//            List<byte[]> list = new ArrayList<>();
-//            //字号
-//            list.add(ESCUtil.fontSizeSetBig(Math.abs(fontSize)));
-//            //默认打印文本，打印完会自动换行
-//            if (fontSize < 0) {
-//                //添加粗体标志
-//                list.add(ESCUtil.boldOn());
-//            } else {
-//                //需要清除
-//                list.add(ESCUtil.boldOff());
-//            }
-//            //对齐方式
-//        } else if (commType == PrintComm.COMM_NULL_LINE) {
-//            //强制空行
-//            return ESCUtil.nextLine(fontSize);
-//        } else if (commType == PrintComm.COMM_CODE) {
-//            //打印二维码
-//        } else if (commType == PrintComm.COMM_UNDER_LINE) {
-//            //点型行
-//            if (fontSize == 1) {
-//                return ESCUtil.underlineWithOneDotWidthOn();
-//            } else if (fontSize == 2) {
-//                return ESCUtil.underlineWithTwoDotWidthOn();
-//            }
-//        }
-//        return null;
-//    }
-//
-//    private int wirteBytes(byte[] src, int index, byte[] targets) {
-//        int length = index + targets.length;
-//        if (length > src.length) {
-//            //重新生成
-//            byte[] newDatas = new byte[index + targets.length];
-//            //拷贝
-//            System.arraycopy(newDatas, 0, src, 0, index);
-//            System.arraycopy(newDatas, index, targets, index, newDatas.length);
-//        } else {
-//            //直接赋值
-//            System.arraycopy(src, index, targets, 0, targets.length);
-//        }
-//        return index + targets.length;
-//    }
-
 }

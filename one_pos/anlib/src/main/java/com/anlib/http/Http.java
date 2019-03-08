@@ -18,7 +18,7 @@ import java.util.Map;
  */
 public class Http {
 
-    public static boolean Debug = false;
+    public static boolean Debug = true;
 
     public static void init(Application application) {
 

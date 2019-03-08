@@ -1,12 +1,14 @@
 package com.anlib;
 
 
+import android.app.Dialog;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.MotionEvent;
 import android.view.View;
 
 import com.anlib.http.HttpLife;
+import com.anlib.util.DialogUtils;
 import com.lzy.okgo.OkGo;
 
 import java.util.ArrayList;
@@ -24,6 +26,8 @@ public abstract class GActivity extends FragmentActivity implements HttpLife {
     private int activity_id;
 
     protected View rootView;
+
+    protected Dialog loadingDialog;
 
     boolean active = true;
 
@@ -64,8 +68,32 @@ public abstract class GActivity extends FragmentActivity implements HttpLife {
     @Override
     public void finish() {
         active = false;
+        closeLoadingDialog();
         GActivityManager.removeActivity(this);
         super.finish();
+    }
+
+    private int showCount;
+
+    public void showLoadingDialog() {
+        if (loadingDialog == null) {
+            loadingDialog = DialogUtils.createLoadingDialog(this, "加载中，请稍后...", true, true);
+        }
+        showCount++;
+        System.err.println("showLoadingDialog showCount=" + showCount);
+        if (!loadingDialog.isShowing()) {
+            loadingDialog.show();
+        }
+    }
+
+    public void closeLoadingDialog() {
+        if (loadingDialog != null && loadingDialog.isShowing()) {
+            showCount--;
+            System.err.println("closeLoadingDialog showCount=" + showCount);
+            if (showCount == 0) {
+                loadingDialog.dismiss();
+            }
+        }
     }
 
     //activity触屏事件分发

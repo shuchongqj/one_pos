@@ -7,6 +7,9 @@ import android.util.DisplayMetrics;
 import com.anlib.http.Http;
 
 
+/**
+ * @author zhumg
+ */
 public class GApplication extends Application {
 
     private static Context context;

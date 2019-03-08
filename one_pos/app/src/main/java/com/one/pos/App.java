@@ -1,15 +1,16 @@
 package com.one.pos;
 
-import android.app.Application;
 import android.content.Context;
 
-import com.one.pos.service.gprint.GpPrint;
+import com.anlib.GApplication;
+import com.anlib.http.Http;
+import com.one.pos.db.ItemCache;
 import com.one.pos.service.sunmi.Sunmi;
 
 /**
  * @author zhumg
  */
-public class App extends Application {
+public class App extends GApplication {
 
     @Override
     public void onCreate() {
@@ -17,9 +18,14 @@ public class App extends Application {
 
         Context c = getApplicationContext();
 
+        //初始化缓存
+        ItemCache.init(this);
+
+        //初始化商米打印
         Sunmi.init(c);
-        GpPrint.init(c);
-        Cache.init(c);
+
+        //http初始化
+        Http.init(this);
     }
 
 }

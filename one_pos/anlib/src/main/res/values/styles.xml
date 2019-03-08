@@ -1,6 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+
+    <!-- 纵向的线条的样式 -->
+    <style name="view_vertical">
+        <item name="android:layout_width">0.5dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/line_d2</item>
+    </style>
+    <!-- 横向的线条的样式 -->
+    <style name="view_horizontal">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0.5dp</item>
+        <item name="android:background">@color/line_d2</item>
+    </style>
+
+    <!-- 透明底的Dialog -->
+    <style name="Translucent_NoTitle_Dialog" parent="android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item><!--边框-->
+        <item name="android:windowIsFloating">true</item><!--是否浮现在activity之上-->
+        <item name="android:windowIsTranslucent">false</item><!--半透明-->
+        <item name="android:windowNoTitle">true</item><!--无标题-->
+        <item name="android:windowBackground">@color/transparent</item><!--背景透明-->
+        <item name="android:backgroundDimEnabled">false</item><!--模糊-->
+    </style>
+
+    <declare-styleable name="RoundedImageView">
+        <attr name="corner_radius" format="dimension" />
+        <attr name="border_width" format="dimension" />
+        <attr name="border_color" format="color" />
+        <attr name="mutate_background" format="boolean" />
+        <attr name="oval" format="boolean" />
+        <attr name="android:scaleType" />
+    </declare-styleable>
+
+    <!-- 普通透明度的Dialog -->
+    <style name="NoTitle_Dialog" parent="android:style/Theme.Dialog">
+        <item name="android:background">#00000000</item> <!-- 设置自定义布局的背景透明 -->
+        <item name="android:windowBackground">@android:color/transparent</item>  <!-- 设置window背景透明，也就是去边框 -->
+    </style>
+
+    <style name="Translucent_Activity" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
     <!-- 自定义仿IOS的AlertDialog的样式 -->
     <style name="Alert_Dialog_Style" parent="@android:style/Theme.Dialog">
         <item name="android:windowBackground">@android:color/transparent</item>

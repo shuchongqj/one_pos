@@ -26,7 +26,7 @@ public class BaseAdapterHolder<DATA> {
     private View mView;
 
     //初始化ViewHolder
-    public BaseAdapterHolder(View itemView) {
+    public BaseAdapterHolder(View itemView, DATA data, int viewType) {
         mView = itemView;
         mItemViews = new SparseArray<>();
     }
@@ -130,7 +130,7 @@ public class BaseAdapterHolder<DATA> {
     /**
      * 通过Drawable设置图片
      *
-     * @param viewId View的id
+     * @param viewId   View的id
      * @param drawable Drawable
      * @return BaseAdapterHolder
      */
@@ -146,7 +146,7 @@ public class BaseAdapterHolder<DATA> {
      * 通过一串数字设置背景色
      *
      * @param viewId View的id
-     * @param color 颜色值 16进制
+     * @param color  颜色值 16进制
      * @return BaseAdapterHolder
      */
     public BaseAdapterHolder setBackgroundColor(@IdRes int viewId, @ColorLong int color) {
@@ -158,7 +158,7 @@ public class BaseAdapterHolder<DATA> {
     /**
      * 通过drawable文件夹设置背景图
      *
-     * @param viewId View的id
+     * @param viewId        View的id
      * @param backgroundRes Resource
      * @return BaseAdapterHolder
      */
@@ -172,7 +172,7 @@ public class BaseAdapterHolder<DATA> {
     /**
      * 通过Drawable设置背景图
      *
-     * @param viewId View的id
+     * @param viewId   View的id
      * @param drawable Drawable
      * @return BaseAdapterHolder
      */
@@ -187,7 +187,7 @@ public class BaseAdapterHolder<DATA> {
     /**
      * 通过一串数字设置文字颜色
      *
-     * @param viewId View的id
+     * @param viewId    View的id
      * @param textColor 颜色值 16进制
      * @return BaseAdapterHolder
      */
@@ -201,7 +201,7 @@ public class BaseAdapterHolder<DATA> {
      * 通过float设置透明度
      *
      * @param viewId View的id
-     * @param value 透明度  范围:[0.0,1.0]
+     * @param value  透明度  范围:[0.0,1.0]
      * @return BaseAdapterHolder
      */
     public BaseAdapterHolder setAlpha(@IdRes int viewId, @FloatRange(from = 0.0, to = 1.0) float
@@ -213,7 +213,7 @@ public class BaseAdapterHolder<DATA> {
     /**
      * 通过boolean类型设置是否显示
      *
-     * @param viewId View的id
+     * @param viewId  View的id
      * @param visible 是否可见 true:可见;  false:不可见,Gone
      * @return BaseAdapterHolder
      */
@@ -224,10 +224,23 @@ public class BaseAdapterHolder<DATA> {
     }
 
     /**
+     * 通过boolean类型设置是否显示
+     *
+     * @param viewId  View的id
+     * @param visible 是否可见 true:可见;  false:不可见,Gone
+     * @return BaseAdapterHolder
+     */
+    public BaseAdapterHolder setVisibility(@IdRes int viewId, int visible) {
+        View view = getView(viewId);
+        view.setVisibility(visible);
+        return this;
+    }
+
+    /**
      * 缓存子控件上界面的数据
      *
      * @param viewId View的id
-     * @param tag 需要缓存的数据
+     * @param tag    需要缓存的数据
      * @return BaseAdapterHolder
      */
     public BaseAdapterHolder setTag(@IdRes int viewId, Object tag) {
@@ -240,8 +253,8 @@ public class BaseAdapterHolder<DATA> {
      * 设置某一位置子控件的数据
      *
      * @param viewId View的id
-     * @param key 数据标识
-     * @param tag 数据
+     * @param key    数据标识
+     * @param tag    数据
      * @return BaseAdapterHolder
      */
     public BaseAdapterHolder setTag(@IdRes int viewId, int key, Object tag) {
@@ -266,7 +279,7 @@ public class BaseAdapterHolder<DATA> {
     /**
      * 设置子控件的点击事件
      *
-     * @param viewId View的id
+     * @param viewId   View的id
      * @param listener OnClickListener监听器
      * @return BaseAdapterHolder
      */
@@ -282,7 +295,7 @@ public class BaseAdapterHolder<DATA> {
     /**
      * 设置子控件的触摸事件
      *
-     * @param viewId View的id
+     * @param viewId   View的id
      * @param listener OnTouchListener
      * @return BaseAdapterHolder
      */
@@ -298,7 +311,7 @@ public class BaseAdapterHolder<DATA> {
     /**
      * 设置子控件的长按事件
      *
-     * @param viewId View的id
+     * @param viewId   View的id
      * @param listener OnLongClickListener
      * @return BaseAdapterHolder
      */

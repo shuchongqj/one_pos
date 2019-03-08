@@ -1,7 +1,31 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.one.pos">
 
+    <uses-permission
+        android:name="android.permission.HARDWARE_TEST"
+        tools:ignore="ProtectedPermissions" />
+
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
+
+    <uses-feature android:name="android.hardware.usb.host" />
+
+    <uses-permission android:name="android.hardware.usb.accessory" />
+    <uses-permission
+        android:name="android.permission.DEVICE_POWER"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission
+        android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:name="com.one.pos.App"
         android:allowBackup="true"
@@ -10,7 +34,7 @@
         android:theme="@style/AppTheme">
         <!-- android:name="com.gamesea.jxg.start.StartActivity" -->
         <activity
-            android:name="com.one.pos.TestActivity"
+            android:name="com.one.pos.ui.main.MainActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="landscape"
             android:windowSoftInputMode="stateHidden">
@@ -21,7 +45,16 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.main.MainActivity" />
+        <activity android:name="com.one.pos.TestActivity">
+            <intent-filter>
+                <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
+            </intent-filter>
+            <meta-data
+                android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"
+                android:resource="@xml/device_filter" />
+        </activity>
+
+        <!--<activity android:name="com.one.pos.TestActivity" />-->
 
 
         <!-- 价格打印 gprinter -->
@@ -36,6 +69,17 @@
         </service>
         <service android:name="com.gprinter.service.AllService"></service>
 
+        <service
+            android:name=".service.test.ForegroundService"
+            android:exported="true"
+            android:label="ForegroundService"
+            android:process="com.service.test.f" />
+
+        <receiver android:name="com.one.pos.service.test.AlarmReceiver">
+            <intent-filter>
+                <action android:name="intent_alarm_log" />
+            </intent-filter>
+        </receiver>
 
     </application>
 

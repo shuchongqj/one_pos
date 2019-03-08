@@ -12,6 +12,9 @@ import java.util.Map;
 
 import static android.content.Context.ACTIVITY_SERVICE;
 
+/**
+ * @author zhumg
+ */
 public class GActivityManager {
 
     private static Map<Integer, GActivity> activityMap = new HashMap<>();

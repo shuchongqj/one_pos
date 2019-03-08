@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:gravity="center_horizontal"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:text="@string/app_name"
+        android:textColor="@color/font_3"
+        android:textSize="@dimen/font_size_14" />
+
+    <TextView
+        android:id="@+id/tv_vip_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_name"
+        android:layout_marginTop="15dp"
+        android:gravity="center_horizontal"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:text="@string/app_name"
+        android:textColor="@color/btn_red"
+        android:textSize="@dimen/font_size_14" />
+
+
+    <TextView
+        android:id="@+id/tv_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_vip_price"
+        android:layout_marginTop="5dp"
+        android:gravity="center_horizontal"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:text="@string/app_name"
+        android:textColor="@color/btn_orange"
+        android:textSize="@dimen/font_size_14" />
+
+
+    <TextView
+        android:id="@+id/tv_storage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_price"
+        android:layout_marginTop="15dp"
+        android:gravity="center_horizontal"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:text="@string/app_name"
+        android:textColor="@color/font_6"
+        android:textSize="@dimen/font_size_12" />
+
+
+    <TextView
+        android:id="@+id/tv_stock"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_storage"
+        android:layout_marginTop="5dp"
+        android:gravity="center_horizontal"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:text="@string/app_name"
+        android:textColor="@color/font_6"
+        android:textSize="@dimen/font_size_12" />
+
+</RelativeLayout>

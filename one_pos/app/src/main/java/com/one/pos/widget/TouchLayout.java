@@ -24,7 +24,7 @@ public class TouchLayout extends FrameLayout {
     private View drapview;
     private View srcView;
     private View layout;
-    private boolean movebool;//
+    private boolean movebool;
     private boolean upbool;
 
     //private GoodBean item;

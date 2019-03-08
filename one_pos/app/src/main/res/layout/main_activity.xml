@@ -43,8 +43,8 @@
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:padding="10dp"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:padding="10dp">
 
                     <com.gongwen.marqueen.SimpleMarqueeView
                         android:id="@+id/tv_message"
@@ -64,12 +64,12 @@
 
                 <TextView
                     android:id="@+id/btn_excel"
+                    style="@style/DefaultBtnTheme"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginRight="10dp"
                     android:background="@drawable/rect_round_white_5"
-                    style="@style/DefaultBtnTheme"
                     android:text="报表"
                     android:textColor="@color/menu_blue" />
 
@@ -87,9 +87,9 @@
                 <LinearLayout
                     android:layout_width="250dp"
                     android:layout_height="38dp"
-                    android:orientation="horizontal"
                     android:layout_gravity="center_vertical"
-                    android:background="@drawable/rect_round_back_5">
+                    android:background="@drawable/rect_round_back_5"
+                    android:orientation="horizontal">
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -156,20 +156,51 @@
             android:layout_weight="1"
             android:orientation="horizontal">
 
-            <ListView
-                android:id="@+id/itemtype_list_view"
+            <in.srain.cube.views.ptr.PtrClassicFrameLayout xmlns:cube_ptr="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/l_itemtype_ptr"
                 android:layout_width="150dp"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                cube_ptr:ptr_duration_to_close="200"
+                cube_ptr:ptr_duration_to_close_header="700"
+                cube_ptr:ptr_keep_header_when_refresh="true"
+                cube_ptr:ptr_pull_to_fresh="false"
+                cube_ptr:ptr_ratio_of_header_height_to_refresh="1.2"
+                cube_ptr:ptr_resistance="1.8">
 
-            </ListView>
+                <ListView
+                    android:id="@+id/itemtype_list_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:dividerHeight="0.5dp">
 
-            <GridView
-                android:id="@+id/item_grid_view"
+                </ListView>
+            </in.srain.cube.views.ptr.PtrClassicFrameLayout>
+
+
+            <in.srain.cube.views.ptr.PtrClassicFrameLayout xmlns:cube_ptr="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/l_item_ptr"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                cube_ptr:ptr_duration_to_close="200"
+                cube_ptr:ptr_duration_to_close_header="700"
+                cube_ptr:ptr_keep_header_when_refresh="true"
+                cube_ptr:ptr_pull_to_fresh="false"
+                cube_ptr:ptr_ratio_of_header_height_to_refresh="1.2"
+                cube_ptr:ptr_resistance="1.8">
 
-            </GridView>
+                <com.anlib.widget.GridViewWithHeaderAndFooter
+                    android:id="@+id/item_grid_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:verticalSpacing="5dp"
+                    android:horizontalSpacing="5dp"
+                    android:numColumns="4"
+                    android:background="@color/bg_f2">
+
+                </com.anlib.widget.GridViewWithHeaderAndFooter>
+
+            </in.srain.cube.views.ptr.PtrClassicFrameLayout>
 
             <LinearLayout
                 android:layout_width="250dp"
@@ -214,14 +245,14 @@
                     </LinearLayout>
 
                     <TextView
-                        style="@style/DefaultBtnTheme"
                         android:id="@+id/btn_add"
+                        style="@style/DefaultBtnTheme"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:layout_marginRight="10dp"
                         android:background="@drawable/rect_round_orange_5"
-                        android:text="添加"/>
+                        android:text="添加" />
 
                 </LinearLayout>
 

@@ -2,15 +2,35 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="horizontal">
 
     <TextView
         android:id="@+id/tv_message"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
         android:gravity="center_horizontal|center_vertical"
         android:padding="15dp"
-        android:text="头部内容"
+        android:text="商米打印"
+        android:textColor="@color/font_3"
+        android:textSize="@dimen/font_size_16" />
+
+    <TextView
+        android:id="@+id/tv_message_1"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:padding="15dp"
+        android:text="蓝牙打印"
+        android:textColor="@color/font_3"
+        android:textSize="@dimen/font_size_16" />
+
+    <TextView
+        android:id="@+id/tv_message_2"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:padding="15dp"
+        android:text="USB打印"
         android:textColor="@color/font_3"
         android:textSize="@dimen/font_size_16" />
 
