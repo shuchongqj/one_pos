@@ -38,14 +38,23 @@ public class CodePrintOrderDataMaker implements PrintDataMaker {
             data.add(printer.getDataAndReset());
             printer.setAlignCenter();
             printer.setEmphasizedOn();
-            printer.setFontSize(2);
+            printer.setFontSize(1);
             printer.setAlignCenter();
-            printer.print("送货清单");
+            printer.print("对米生鲜到家");
             printer.setFontSize(0);
             printer.printLineFeed();
             printer.printLineFeed();
             printer.print("--------------------1号生活--------------------");
             printer.printLineFeed();
+            if(!"".equals(mData.getRemarks())) {
+                printer.setFontSize(1);
+                printer.print("备注：" + mData.getRemarks());
+                printer.printLineFeed();
+                printer.setFontSize(0);
+                printer.print("------------------------------------------------");
+
+                printer.printLineFeed();
+            }
             printer.setAlignLeft();
             printer.print("当日排号：" + mData.getDaySortNumber());
             printer.printLineFeed();
@@ -64,8 +73,8 @@ public class CodePrintOrderDataMaker implements PrintDataMaker {
             printer.print("电   话：" + mData.getReceiptPhone());
             printer.printLineFeed();
             printer.print("地   址：" + mData.getDistributionAddress());
-            printer.printLineFeed();
-            printer.print("备注留言：" + mData.getRemarks());
+//            printer.printLineFeed();
+//            printer.print("备注留言：" + mData.getRemarks());
             printer.printLineFeed();
             printer.setAlignCenter();
             printer.print("--------------------商品信息--------------------");
