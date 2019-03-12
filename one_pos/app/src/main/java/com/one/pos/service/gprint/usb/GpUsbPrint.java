@@ -1,6 +1,5 @@
 package com.one.pos.service.gprint.usb;
 
-import android.annotation.TargetApi;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -12,198 +11,180 @@ import android.hardware.usb.UsbDeviceConnection;
 import android.hardware.usb.UsbEndpoint;
 import android.hardware.usb.UsbInterface;
 import android.hardware.usb.UsbManager;
-import android.os.Build;
-import android.os.Handler;
-import android.os.Message;
-import android.util.Log;
 
 import com.anlib.util.ToastUtils;
-import com.one.pos.service.device.bluetooth.DeviceEntity;
+import com.one.pos.event.UsbStatusChangeEvent;
+import com.one.pos.service.print.PrintThread;
 
-import java.util.ArrayList;
+import org.greenrobot.eventbus.EventBus;
+
 import java.util.HashMap;
-import java.util.List;
 
 /**
  * USB 连接打印机 / 佳博打印机
  *
  * @author zhumg
  */
-public class GpUsbPrint {
+public class GpUsbPrint extends PrintThread {
 
     public static final String ACTION_USB_PERMISSION = "com.usb.printer.USB_PERMISSION";
 
-    private static GpUsbPrint mInstance;
-    public static boolean use = false;
+    private static final int TIME_OUT = 100000;
 
-    private Context mContext;
     private PendingIntent mPermissionIntent;
     private UsbManager mUsbManager;
     private UsbDeviceConnection mUsbDeviceConnection;
 
-    private UsbEndpoint ep, printerEp;
-    private UsbInterface usbInterface;
+    private UsbEndpoint printerEp;
 
-    private static final int TIME_OUT = 100000;
+    //当前连接中的打印机设备
+    private UsbDevice nowUsbDevice;
 
-    public static GpUsbPrint getInstance() {
-        if (mInstance == null) {
-            synchronized (GpUsbPrint.class) {
-                if (mInstance == null) {
-                    mInstance = new GpUsbPrint();
-                }
+    //状态，-1连接异常，0未连接，1监听中，2连接中，10连接成功，100权限被拒绝
+    private int status;
+
+    //初始化
+    @Override
+    public void init(Context context) {
+        super.init(context);
+    }
+
+    @Override
+    protected void onConnect() {
+        // 列出所有的USB设备，并且都请求获取USB权限
+        HashMap<String, UsbDevice> deviceList = mUsbManager.getDeviceList();
+        for (UsbDevice device : deviceList.values()) {
+            if (device.getInterface(0).getInterfaceClass() == 7) {
+                connect(device);
             }
         }
-        return mInstance;
     }
 
-    public static void initPrinter(Context context) {
-        getInstance().mContext = context;
-    }
-
-    public static void connPrinter() {
-        if (getInstance().mUsbManager == null) {
-            getInstance().initConn();
+    @Override
+    protected void onClose() {
+        if (mUsbDeviceConnection != null) {
+            mUsbDeviceConnection.close();
+            mUsbDeviceConnection = null;
         }
-        //直接马上连接
-        List<DeviceEntity> devices = getInstance().getUsbDeviceEntitys();
-        if (devices.size() > 0) {
-            getInstance().connectUsbPrinter(devices.get(0));
+        nowUsbDevice = null;
+        printerEp = null;
+        closeThread();
+        //解绑
+        updateStatus(1);
+    }
+
+    @Override
+    protected void onPrint(byte[] datas) {
+        if (mUsbDeviceConnection != null) {
+            mUsbDeviceConnection.bulkTransfer(printerEp, datas, 0, datas.length);
         } else {
-            ToastUtils.showEorr(getInstance().mContext, "无法找到USB打印设备");
+            ToastUtils.showEorr(context, "打印异常");
         }
     }
 
-    public static void closePrinter() {
-        getInstance().close();
-    }
-
-    void initConn() {
-        mUsbManager = (UsbManager) mContext.getSystemService(Context.USB_SERVICE);
-        mPermissionIntent = PendingIntent.getBroadcast(mContext, 0, new Intent(ACTION_USB_PERMISSION), 0);
+    //启动服务
+    public void start() {
+        if (status != 0) {
+            return;
+        }
+        updateStatus(1);
+        //开启监听，监听USB的插入，拨出情况
+        mUsbManager = (UsbManager) context.getSystemService(Context.USB_SERVICE);
+        mPermissionIntent = PendingIntent.getBroadcast(context, 0, new Intent(ACTION_USB_PERMISSION), 0);
         IntentFilter filter = new IntentFilter(ACTION_USB_PERMISSION);
         filter.addAction(UsbManager.ACTION_USB_DEVICE_DETACHED);
         filter.addAction(UsbManager.ACTION_USB_DEVICE_ATTACHED);
-        mContext.registerReceiver(mUsbDeviceReceiver, filter);
+        context.registerReceiver(mUsbDeviceReceiver, filter);
+        //查询当前已插入的USB情况
+        onConnect();
     }
 
-    //拿到所有 USB 硬件
-    public List<DeviceEntity> getUsbDeviceEntitys() {
+    //释放
+    public void destroy() {
+        onClose();
+        context.unregisterReceiver(mUsbDeviceReceiver);
+        mUsbManager = null;
+        mPermissionIntent = null;
+        updateStatus(0);
+    }
 
-        List<DeviceEntity> deviceEntities = new ArrayList<>();
-
-        // 列出所有的USB设备，并且都请求获取USB权限
-        HashMap<String, UsbDevice> deviceList = mUsbManager.getDeviceList();
-
-        StringBuilder sb = new StringBuilder();
-
-        for (UsbDevice device : deviceList.values()) {
-            usbInterface = device.getInterface(0);
-            if (usbInterface.getInterfaceClass() == 7) {
-                sb.delete(0, sb.length());
-                DeviceEntity deviceEntity = new DeviceEntity(device.getProductName(), device.getManufacturerName());
-                deviceEntities.add(deviceEntity);
-                deviceEntity.setSrcDevice(device);
-                sb.append("VendorId=").append(device.getVendorId()).append(", ")
-                        .append("ProductId=").append(device.getProductId())
-                        .append("DeviceId=").append(device.getDeviceId());
-                deviceEntity.setInfo(sb.toString());
-
-                Log.d("device", device.getProductName() + "     " + device.getManufacturerName());
-                Log.d("device", device.getVendorId() + "     " + device.getProductId() + "      " + device.getDeviceId());
-                Log.d("device", usbInterface.getInterfaceClass() + "");
+    private void connect(UsbDevice usbDevice) {
+        //找到，直接连接
+        updateStatus(2);
+        UsbInterface usbInterface = usbDevice.getInterface(0);
+        for (int i = 0; i < usbInterface.getEndpointCount(); i++) {
+            UsbEndpoint ep = usbInterface.getEndpoint(i);
+            if (ep.getType() == UsbConstants.USB_ENDPOINT_XFER_BULK) {
+                if (ep.getDirection() == UsbConstants.USB_DIR_OUT) {
+                    if (!mUsbManager.hasPermission(usbDevice)) {
+                        mUsbManager.requestPermission(usbDevice, mPermissionIntent);
+                    }
+                    printerEp = ep;
+                    mUsbDeviceConnection = mUsbManager.openDevice(usbDevice);
+                    if (mUsbDeviceConnection != null) {
+                        mUsbDeviceConnection.claimInterface(usbInterface, true);
+                        nowUsbDevice = usbDevice;
+                        updateStatus(10);
+                        ToastUtils.showSuccess(context, "已成功连接USB打印机");
+                        startThread();
+                        return;
+                    }
+                }
             }
         }
-
-        return deviceEntities;
+        updateStatus(1);
     }
 
     private final BroadcastReceiver mUsbDeviceReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
-            Log.d("action", action);
             UsbDevice mUsbDevice = intent.getParcelableExtra(UsbManager.EXTRA_DEVICE);
+            //如果是打印机，才监听
+            if (mUsbDevice == null || mUsbDevice.getInterface(0).getInterfaceClass() != 7) {
+                return;
+            }
+            //接受了权限
             if (ACTION_USB_PERMISSION.equals(action)) {
-                synchronized (this) {
-                    if (intent.getBooleanExtra(UsbManager.EXTRA_PERMISSION_GRANTED, false) && mUsbDevice != null) {
-                        Log.d("receiver", action);
-                        _connectUsbPrinter(mUsbDevice);
-                    } else {
-                        ToastUtils.showToast(context, "USB设备请求被拒绝");
+                if (intent.getBooleanExtra(UsbManager.EXTRA_PERMISSION_GRANTED, false)
+                        && mUsbDevice != null) {
+                    //如果当前是1，马上连接
+                    if (nowUsbDevice == null || status <= 1) {
+                        connect(mUsbDevice);
                     }
+                } else {
+                    updateStatus(100);
+                    ToastUtils.showEorr(context, "USB打印机 权限请求被拒绝");
                 }
             } else if (UsbManager.ACTION_USB_DEVICE_DETACHED.equals(action)) {
-                if (mUsbDevice != null) {
-                    ToastUtils.showToast(context, "有设备拔出");
-                }
+                //设备拨出
+                ToastUtils.showEorr(context, "USB打印机 被拔出");
+                onClose();
             } else if (UsbManager.ACTION_USB_DEVICE_ATTACHED.equals(action)) {
-                ToastUtils.showToast(context, "有设备插入");
-                if (mUsbDevice != null) {
-                    if (!mUsbManager.hasPermission(mUsbDevice)) {
-                        mUsbManager.requestPermission(mUsbDevice, mPermissionIntent);
+                //设备插入
+                ToastUtils.showToast(context, "USB打印机 设备已插入");
+                //如果没有权限，则申请权限
+                if (!mUsbManager.hasPermission(mUsbDevice)) {
+                    mUsbManager.requestPermission(mUsbDevice, mPermissionIntent);
+                } else {
+                    //直接连接
+                    if (nowUsbDevice == null || status <= 1) {
+                        connect(mUsbDevice);
                     }
                 }
             }
         }
     };
 
-    public void close() {
-        if (mUsbDeviceConnection != null) {
-            mUsbDeviceConnection.close();
-            mUsbDeviceConnection = null;
-        }
-        mContext.unregisterReceiver(mUsbDeviceReceiver);
-        mUsbManager = null;
+    public int getStatus() {
+        return this.status;
     }
 
-    public void connectUsbPrinter(DeviceEntity deviceEntity) {
-        UsbDevice mUsbDevice = (UsbDevice) deviceEntity.getSrcDevice();
-        //先变为0
-        if (_connectUsbPrinter(mUsbDevice)) {
-            deviceEntity.setStatus(10);
-            return;
-        }
-        deviceEntity.setStatus(0);
+    private void updateStatus(int targetStatus) {
+        int s = this.status;
+        this.status = targetStatus;
+        //状态改变，通知
+        EventBus.getDefault().post(new UsbStatusChangeEvent(s, status));
     }
-
-    private boolean _connectUsbPrinter(UsbDevice usbDevice) {
-        for (int i = 0; i < usbInterface.getEndpointCount(); i++) {
-            ep = usbInterface.getEndpoint(i);
-            if (ep.getType() == UsbConstants.USB_ENDPOINT_XFER_BULK) {
-                if (ep.getDirection() == UsbConstants.USB_DIR_OUT) {
-                    if (!mUsbManager.hasPermission(usbDevice)) {
-                        mUsbManager.requestPermission(usbDevice, mPermissionIntent);
-                    }
-                    mUsbDeviceConnection = mUsbManager.openDevice(usbDevice);
-                    printerEp = ep;
-                    if (mUsbDeviceConnection != null) {
-                        mUsbDeviceConnection.claimInterface(usbInterface, true);
-                        ToastUtils.showToast(mContext, "设备已连接");
-                        return true;
-                    }
-                }
-            }
-        }
-        ToastUtils.showToast(mContext, "连接打印机失败");
-        return false;
-    }
-
-    public void write(byte[] bytes) {
-        if (mUsbDeviceConnection != null) {
-            int b = mUsbDeviceConnection.bulkTransfer(printerEp, bytes, bytes.length, TIME_OUT);
-            //ToastUtil.showToast(this.mContext, "成功打印：" + b + "字符");
-        } else {
-            handler.sendEmptyMessage(0);
-        }
-    }
-
-    private Handler handler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            ToastUtils.showToast(mContext, "未发现可用的打印机");
-        }
-    };
 
 }

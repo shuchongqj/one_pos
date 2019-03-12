@@ -5,14 +5,15 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.IBinder;
 import android.os.IInterface;
+import android.os.RemoteException;
 import android.util.Log;
 
 import com.anlib.util.ApkUtils;
 import com.anlib.util.QrCodeUtils;
 import com.anlib.util.ToastUtils;
-import com.one.pos.service.device.aidl.AidlPrintService;
+import com.one.pos.service.print.aidl.AidlPrintService;
 import com.one.pos.service.sunmi.PrintComm;
-import com.one.pos.service.sunmi.PrintTask;
+import com.one.pos.service.print.EscPrintData;
 import com.one.pos.service.sunmi.bluetooth.SunmiPrintStream;
 
 import java.util.List;
@@ -26,18 +27,17 @@ import woyou.aidlservice.jiuiv5.IWoyouService;
  *
  * @author zhumg
  */
-public class SunmiAidlPrint extends AidlPrintService<PrintTask> {
+public class SunmiAidlPrint extends AidlPrintService<EscPrintData> {
 
     public SunmiAidlPrint(Context context) {
         super(context);
     }
 
     @Override
-    protected void callPrint(PrintTask printTask) {
+    protected void callPrint(EscPrintData printTask) {
         try {
             print((IWoyouService) aidlService, callback, printTask);
         } catch (Exception e) {
-
         }
     }
 
@@ -53,6 +53,11 @@ public class SunmiAidlPrint extends AidlPrintService<PrintTask> {
 
         @Override
         public void onRaiseException(int code, final String msg) {
+        }
+
+        @Override
+        public void onPrintResult(int code, String msg) throws RemoteException {
+
         }
     };
 
@@ -83,7 +88,7 @@ public class SunmiAidlPrint extends AidlPrintService<PrintTask> {
         return IWoyouService.Stub.asInterface(iBinder);
     }
 
-    private void print(IWoyouService service, ICallback callback, PrintTask entity) throws Exception {
+    private void print(IWoyouService service, ICallback callback, EscPrintData entity) throws Exception {
         //次数
         int count = entity.getCount();
         for (int i = 0; i < count; i++) {
@@ -141,6 +146,10 @@ public class SunmiAidlPrint extends AidlPrintService<PrintTask> {
             default:
                 break;
         }
+    }
+
+    public IWoyouService getWoyouService() {
+        return (IWoyouService)this.aidlService;
     }
 
 }

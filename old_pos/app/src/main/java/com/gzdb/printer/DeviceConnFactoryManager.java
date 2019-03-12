@@ -543,18 +543,5 @@ public class DeviceConnFactoryManager {
         return (byte) ((r & FLAG) >> 4);
     }
 
-    BroadcastReceiver usbStateReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            String action = intent.getAction();
-            switch (action) {
-                case ACTION_USB_DEVICE_DETACHED:
-                    sendStateBroadcast(CONN_STATE_DISCONNECT);
-                    break;
-                default:
-                    break;
-            }
-        }
-    };
 
 }

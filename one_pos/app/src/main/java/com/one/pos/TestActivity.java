@@ -2,9 +2,6 @@ package com.one.pos;
 
 import android.os.Handler;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -12,19 +9,24 @@ import com.anlib.GActivity;
 import com.anlib.refresh.PtrLoader;
 import com.anlib.refresh.RefreshLoaderListener;
 import com.anlib.util.Arith;
-import com.anlib.util.DialogUtils;
 import com.anlib.util.LogUtils;
-import com.anlib.util.ToastUtils;
 import com.anlib.util.Utils;
 import com.anlib.widget.GridViewWithHeaderAndFooter;
 import com.gprinter.command.EscCommand;
 import com.gprinter.command.LabelCommand;
-import com.one.pos.service.device.bluetooth.DeviceEntity;
-import com.one.pos.service.gprint.bluetooth.GpBluetoothPrint;
+import com.one.pos.event.UsbStatusChangeEvent;
 import com.one.pos.service.gprint.usb.GpUsbPrint;
+import com.one.pos.service.print.TscPrintData;
+import com.one.pos.service.print.bluetooth.DeviceEntity;
+import com.one.pos.service.gprint.bluetooth.GpBluetoothPrint;
 import com.one.pos.service.sunmi.PrintComm;
-import com.one.pos.service.sunmi.PrintTask;
+import com.one.pos.service.print.EscPrintData;
 import com.one.pos.service.sunmi.aidl.SunmiAidlPrint;
+import com.one.pos.service.sunmi.fscene.ScreenManager;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,13 +54,25 @@ public class TestActivity extends GActivity {
 
     List<DeviceEntity> entities;
 
+    GpUsbPrint gpUsbPrint;
+
+    TextView tvMessage;
+
     @Override
     protected int getContentViewId() {
         return R.layout.ptr_gridview;
     }
 
     @Override
+    protected void onDestroy() {
+        EventBus.getDefault().unregister(this);
+        super.onDestroy();
+    }
+
+    @Override
     protected void initView(View view) {
+
+        EventBus.getDefault().register(this);
 
         PtrCLog.setLogLevel(PtrCLog.LEVEL_FATAL + 1);
 
@@ -83,7 +97,8 @@ public class TestActivity extends GActivity {
         //listView.setAdapter(adapter);
         gridView.setAdapter(adapter);
 
-        bluetoothPrint = new GpBluetoothPrint(TestActivity.this);
+        bluetoothPrint = new GpBluetoothPrint();
+        bluetoothPrint.init(this);
 
         View v = View.inflate(this, R.layout.test_head, null);
         v.findViewById(R.id.tv_message).setOnClickListener(new View.OnClickListener() {
@@ -100,81 +115,49 @@ public class TestActivity extends GActivity {
                 comms.add(new PrintComm(PrintComm.COMM_NULL_LINE, 2, 1, null));
                 comms.add(new PrintComm(PrintComm.COMM_TEXT, 26, 0, "订单时间：2018-12-12 12:12:12"));
                 comms.add(new PrintComm(PrintComm.COMM_TEXT, 26, 1, "--------------------"));
-                aidlPrint.print(new PrintTask(comms));
+                aidlPrint.print(new EscPrintData(comms));
+
+                ScreenManager screenManager = ScreenManager.getInstance();
+                screenManager.init(TestActivity.this);
+
             }
         });
         v.findViewById(R.id.tv_message_1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //蓝牙打印
-//                Sunmi.onExit();
-                bluetoothPrint.print(1, sendLabelPos("商品名", "5234", 1, 4.3, 3.2, "1", "2.3", 3.3));
+                bluetoothPrint.print(new TscPrintData(1, sendLabelPos("商品名", "5234", 1, 4.3, 3.2, "1", "2.3", 3.3)));
             }
         });
 
-        v.findViewById(R.id.tv_message_2).setOnClickListener(new View.OnClickListener() {
+        tvMessage = v.findViewById(R.id.tv_message_2);
+        tvMessage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                GpUsbPrint usbPrinter = GpUsbPrint.getInstance();
-                GpUsbPrint.initPrinter(TestActivity.this);
-                GpUsbPrint.connPrinter();
-
-                LabelCommand command = sendLabelPos("商品名", "5234", 1, 4.3, 3.2, "1", "2.3", 3.3);
-                byte[] sendData = GpBluetoothPrint.labelCommandToBytes(command);
-                GpUsbPrint.getInstance().write(sendData);
-
-//                entities = usbPrinter.getUsbDeviceEntitys();
-//
-//                if (entities != null && entities.size() > 0) {
-//                    DialogUtils.createListDialog(TestActivity.this, new AdapterView.OnItemClickListener() {
-//                        @Override
-//                        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                            //点击后，进行连接并打印
-//                            GpUsbPrint.getInstance().connectUsbPrinter(entities.get(i));
-//                            //进行打印
-//                            try {
-//                                LabelCommand command = sendLabelPos("商品名", "5234", 1, 4.3, 3.2, "1", "2.3", 3.3);
-//                                byte[] sendData = GpBluetoothPrint.labelCommandToBytes(command);
-//                                GpUsbPrint.getInstance().write(sendData);
-//                            } catch (Exception e) {
-//                                e.printStackTrace();
-//                            }
-//                        }
-//                    }, new BaseAdapter() {
-//                        @Override
-//                        public int getCount() {
-//                            return entities.size();
-//                        }
-//
-//                        @Override
-//                        public Object getItem(int i) {
-//                            return entities.get(i);
-//                        }
-//
-//                        @Override
-//                        public long getItemId(int i) {
-//                            return 0;
-//                        }
-//
-//                        @Override
-//                        public View getView(int position, View convertView, ViewGroup viewGroup) {
-//                            if (convertView == null) {
-//                                convertView = View.inflate(TestActivity.this,
-//                                        R.layout.widget_line_txt, null);
-//                            }
-//                            ((TextView) convertView.findViewById(R.id.wlt_txt)).setText(((DeviceEntity) getItem(position)).getName());
-//                            return convertView;
-//                        }
-//                    }).show();
+//                if (gpUsbPrint.getStatus() != 10) {
+//                    //重新折腾
+//                    if (gpUsbPrint.getStatus() == 100) {
+//                        gpUsbPrint.checkNowUsbDevice();
+//                        return;
+//                    }
 //                } else {
-//                    ToastUtils.showToast(TestActivity.this, "没有找到usb设备");
+//                    LabelCommand command = sendLabelPos("商品名", "5234", 1, 4.3, 3.2, "1", "2.3", 3.3);
+//                    gpUsbPrint.write(TscPrintData.labelCommandToBytes(command));
 //                }
             }
         });
         gridView.addHeaderView(v);
 
         ptrLoader.showLoading();
+
+//        new Handler().postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                gpUsbPrint = new GpUsbPrint();
+//                gpUsbPrint.init(TestActivity.this);
+//                gpUsbPrint.start();
+//            }
+//        }, 1000);
     }
 
 
@@ -295,4 +278,30 @@ public class TestActivity extends GActivity {
 
         return tsc;
     }
+
+    @Subscribe(threadMode = ThreadMode.ASYNC)
+    public void usbStatusChange(UsbStatusChangeEvent event) {
+        String msg = "";
+        int status = event.getStatus();
+        if (status == 0) {
+            msg = "未连接";
+        } else if (status == 1) {
+            msg = "监听中";
+        } else if (status == 2) {
+            msg = "连接中";
+        } else if (status == 10) {
+            msg = "已连接";
+        } else {
+            msg = "连接异常";
+        }
+        final String targetMsg = msg;
+        tvMessage.post(new Runnable() {
+            @Override
+            public void run() {
+                tvMessage.setText(targetMsg);
+            }
+        });
+
+    }
+
 }

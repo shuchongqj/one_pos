@@ -99,10 +99,14 @@ public class PrintUtil {
         // 清除打印缓冲区
         tsc.addCls();
 
-        int x = 290;
-        int y = 30;
+        int x = 300;
+        int y = 10;
 
         int gap = 25;
+
+        //打印店名
+        tsc.addText(x, y, LabelCommand.FONTTYPE.SIMPLIFIED_CHINESE, LabelCommand.ROTATION.ROTATION_90, LabelCommand.FONTMUL.MUL_1, LabelCommand.FONTMUL.MUL_1,
+                App.getInstance().getCurrentUser().getShowName());
 
         tsc.addText(x - gap, y, LabelCommand.FONTTYPE.SIMPLIFIED_CHINESE, LabelCommand.ROTATION.ROTATION_90, LabelCommand.FONTMUL.MUL_1, LabelCommand.FONTMUL.MUL_1,
                 name);

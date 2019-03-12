@@ -136,6 +136,8 @@ public class EditSaleActivity extends BaseActivity {
                 etValue1.setBackgroundResource(R.drawable.bg_corner_gray);
                 desc1 = "商品组合总价";
                 desc2 = "优惠立减";
+                hint1 = "商品组合总价";
+                hint2 = "优惠立减";
                 break;
             case 3:
                 llProducts.setVisibility(View.GONE);
@@ -160,25 +162,22 @@ public class EditSaleActivity extends BaseActivity {
 
         Calendar selectedDate = Calendar.getInstance();
         Calendar startDate = Calendar.getInstance();
-        //startDate.set(2013,1,1);
         Calendar endDate = Calendar.getInstance();
-        //endDate.set(2020,1,1);
 
         //正确设置方式 原因：注意事项有说明
-        startDate.set(2013,0,1);
-        endDate.set(2020,11,31);
+        startDate.set(2019, 0, 1);
+        endDate.set(2020, 11, 31);
 
         pvTime = new TimePickerBuilder(this, new OnTimeSelectListener() {
             @Override
-            public void onTimeSelect(Date date,View v) {//选中事件回调
+            public void onTimeSelect(Date date, View v) {//选中事件回调
                 if (timeType == 0) {
                     tvStart.setText(sSimpleDateFormat.format(date));
                 } else {
                     tvEnd.setText(sSimpleDateFormat.format(date));
                 }
             }
-        })
-                .setType(new boolean[]{true, true, true, true, true, false})// 默认全部显示
+        }).setType(new boolean[]{true, true, true, true, true, false})// 默认全部显示
                 .setCancelText("取消")//取消按钮文字
                 .setSubmitText("确认")//确认按钮文字
                 .setOutSideCancelable(false)//点击屏幕，点在控件外部范围时，是否取消显示
@@ -186,8 +185,8 @@ public class EditSaleActivity extends BaseActivity {
                 .setSubmitColor(getResources().getColor(R.color.blue))//确定按钮文字颜色
                 .setCancelColor(getResources().getColor(R.color.gray1))//取消按钮文字颜色
                 .setDate(selectedDate)// 如果不设置的话，默认是系统时间*/
-                .setRangDate(startDate,endDate)//起始终止年月日设定
-                .setLabel("年","月","日","时","分","秒")//默认设置为年月日时分秒
+                .setRangDate(startDate, endDate)//起始终止年月日设定
+                .setLabel("年", "月", "日", "时", "分", "秒")//默认设置为年月日时分秒
                 .isCenterLabel(true) //是否只显示中间选中项的label文字，false则每项item全部都带有label。
                 .isDialog(false)//是否显示为对话框样式
                 .build();
@@ -209,7 +208,7 @@ public class EditSaleActivity extends BaseActivity {
             case R.id.tv_start:
                 timeType = 0;
                 if (method.equals("edit")) {
-                    Date date=new Date(saleInfo.getStartTime());
+                    Date date = new Date(saleInfo.getStartTime());
                     Calendar c = Calendar.getInstance();
                     c.setTime(date);
                     pvTime.setDate(c);
@@ -219,7 +218,7 @@ public class EditSaleActivity extends BaseActivity {
             case R.id.tv_end:
                 timeType = 1;
                 if (method.equals("edit")) {
-                    Date date=new Date(saleInfo.getEndTime());
+                    Date date = new Date(saleInfo.getEndTime());
                     Calendar c = Calendar.getInstance();
                     c.setTime(date);
                     pvTime.setDate(c);
@@ -281,19 +280,11 @@ public class EditSaleActivity extends BaseActivity {
             ToastUtil.showWrning(mContext, "请输入活动名称");
             return;
         }
-        if (tvStart.equals("")) {
-            ToastUtil.showWrning(mContext, "请输入活动名称");
-            return;
-        }
-        if (tvEnd.equals("")) {
-            ToastUtil.showWrning(mContext, "请输入活动名称");
-            return;
-        }
-        if (etValue1.equals("")) {
+        if (value1.equals("")) {
             ToastUtil.showWrning(mContext, "请输入" + hint1);
             return;
         }
-        if (etValue2.equals("")) {
+        if (value2.equals("")) {
             ToastUtil.showWrning(mContext, "请输入" + hint2);
             return;
         }

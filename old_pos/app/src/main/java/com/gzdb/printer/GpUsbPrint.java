@@ -33,7 +33,7 @@ public class GpUsbPrint {
     public static final String ACTION_USB_PERMISSION = "com.usb.printer.USB_PERMISSION";
 
     private static GpUsbPrint mInstance;
-    public static boolean use = false;
+    public static boolean use = true;
 
     private Context mContext;
     private PendingIntent mPermissionIntent;

@@ -27,15 +27,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.apkfuns.logutils.LogUtils;
-import com.baidu.platform.comapi.map.A;
 import com.core.http.Http;
 import com.core.okgo.NydResponse;
-import com.core.okgo.callback.DialogCallback;
 import com.core.okgo.callback.JsonCallback;
 import com.core.util.BaseUtils;
 import com.core.util.ToastUtil;
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 import com.gzdb.basepos.App;
 import com.gzdb.basepos.BaseActivity;
@@ -56,7 +53,6 @@ import com.gzdb.sunmi.util.ScreenUtil;
 import com.gzdb.supermarket.activity.PayActivity;
 import com.gzdb.supermarket.adapter.PlaceorderDetailAdapter;
 import com.gzdb.supermarket.been.BottonItem;
-import com.gzdb.supermarket.been.CouponBean;
 import com.gzdb.supermarket.been.CreateOrderSuccessBean;
 import com.gzdb.supermarket.been.FinishOrderData;
 import com.gzdb.supermarket.been.FreePriceGoodBean;
@@ -65,7 +61,6 @@ import com.gzdb.supermarket.been.Group;
 import com.gzdb.supermarket.been.ItemSnapshotsBean;
 import com.gzdb.supermarket.cache.ShopCart;
 import com.gzdb.supermarket.cache.ShopCartItemPrice;
-import com.gzdb.supermarket.common.BottonSelectLayout;
 import com.gzdb.supermarket.dialog.DiscountDialog;
 import com.gzdb.supermarket.entity.PlaceOderData;
 import com.gzdb.supermarket.scan.ScanGunKeyEventHelper;
@@ -76,17 +71,14 @@ import com.gzdb.supermarket.util.DialogUtil;
 import com.gzdb.supermarket.util.GsonUtil;
 import com.gzdb.supermarket.util.Utils;
 import com.gzdb.supermarket.widget.NumberKeyboardView;
-import com.gzdb.vip.VipMoneyInDialog;
 import com.hss01248.dialog.StyledDialog;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.model.HttpParams;
 import com.lzy.okgo.model.Response;
 import com.umeng.analytics.MobclickAgent;
 import com.zhumg.anlib.utils.JsonUtils;
-import com.zhumg.anlib.utils.StringUtils;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.lang.reflect.Method;
@@ -96,7 +88,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -188,7 +179,6 @@ public class PlaceOrderActivity extends BaseActivity implements ScanGunKeyEventH
     LinearLayout layoutCharge;//找零
     TextView textcharge;//找零
     StringBuilder builder = new StringBuilder();
-    StringBuilder builder1 = new StringBuilder();
 
     //-public static double toPrice;//原价
 
@@ -360,6 +350,9 @@ public class PlaceOrderActivity extends BaseActivity implements ScanGunKeyEventH
     private void itemPeriodDiscountQuery() {
         final List<Long> itemIds = new ArrayList<>();
         for (ShopCart.ShopCartItem carItem : ShopCart.nowShopCart.gets()) {
+            if (carItem.getItem().getItemType() == 0) {
+                continue;
+            }
             itemIds.add(Long.parseLong(carItem.item.getId()));
         }
         HttpParams params = new HttpParams();
@@ -391,7 +384,7 @@ public class PlaceOrderActivity extends BaseActivity implements ScanGunKeyEventH
                         } catch (Exception e) {
                             e.printStackTrace();
                             handlerActivityTry(null);
-                            //ToastUtil.showEorr(PlaceOrderActivity.this, "接口返回参数异常");
+                            ToastUtil.showEorr(PlaceOrderActivity.this, "接口参数异常");
                         }
                     }
 
@@ -672,7 +665,13 @@ public class PlaceOrderActivity extends BaseActivity implements ScanGunKeyEventH
         //循环计算
         for (ShopCart.ShopCartItem carItem : ShopCart.nowShopCart.gets()) {
 
-            carItem.initItemPrice();
+            //自由价商品
+            if (carItem.getItem().getItemType() == 0) {
+                carItem.initFreeItemPrice(carItem.item.getSalesPrice());
+            } else {
+                carItem.initItemPrice();
+            }
+
             ShopCartItemPrice itemPrice = carItem.itemPrice;
 
             //商品价格
@@ -680,7 +679,7 @@ public class PlaceOrderActivity extends BaseActivity implements ScanGunKeyEventH
             //数量
             itemPrice.count = carItem.count;
 
-            //稳重价
+            //称重价
             if (carItem.item.getItemType() == 2) {
                 itemPrice.weigetPrice = Arith.mul(orderPrice, carItem.discount);
                 //数量变称重
@@ -690,7 +689,9 @@ public class PlaceOrderActivity extends BaseActivity implements ScanGunKeyEventH
             //晚上打折的单价
             Integer nightPrice = null;
             if (nightPriceMap != null) {
-                nightPrice = nightPriceMap.get(Long.parseLong(carItem.item.getId()));
+                if (carItem.getItem().getItemType() != 0) {
+                    nightPrice = nightPriceMap.get(Long.parseLong(carItem.item.getId()));
+                }
             }
             //没有打折，或者打折是1000即原价
             if (nightPrice == null || nightPrice == 1000) {
@@ -698,11 +699,11 @@ public class PlaceOrderActivity extends BaseActivity implements ScanGunKeyEventH
             } else {
                 itemPrice.nightPrice = Arith.mul(orderPrice, Arith.div(nightPrice.intValue(), 1000));
             }
-            //商品直接优惠单价
+            //其它特殊活动
             if (carItem.item.getState() == 1) {
                 if (carItem.item.getActivityType() == 1) {
                     //商品 单品 折扣
-                    itemPrice.couponPrice = Arith.del(orderPrice, carItem.item.getDiscount());
+                    itemPrice.couponPrice = carItem.item.getDiscount();
                 } else if (carItem.item.getActivityType() == 2) {
                     //商品 组合 优惠
                     addGroupItem(carItem, longListMap);
@@ -781,7 +782,11 @@ public class PlaceOrderActivity extends BaseActivity implements ScanGunKeyEventH
 
 
         for (ShopCart.ShopCartItem carItem : ShopCart.nowShopCart.gets()) {
-            carItem.itemPrice.handlerOrderPrice();
+
+            //处理单价，所有活动的单价，最终取最低的那个，存在orderPrice中
+            if (carItem.getItem().getItemType() != 0) {
+                carItem.itemPrice.handlerOrderPrice();
+            }
 
             //原价
             double itemMoney = Arith.mul(carItem.itemPrice.price, carItem.itemPrice.count);
@@ -935,11 +940,11 @@ public class PlaceOrderActivity extends BaseActivity implements ScanGunKeyEventH
             }
         }
 
-        if (_payMoney > 0) {
-            cashPayStatus(true);
-        } else {
-            cashPayStatus(false);
-        }
+        //if (_payMoney > 0) {
+        cashPayStatus(true);
+        //} else {
+        //    cashPayStatus(false);
+        //}
     }
 
     private SaleType3 getSaleMoneyEntity(double money) {
@@ -1180,8 +1185,6 @@ public class PlaceOrderActivity extends BaseActivity implements ScanGunKeyEventH
                             //                        bean.setNormalQuantity(0);
                         }
                     }
-
-
                     orderItemBeen.add(bean);
                 }
 
@@ -1274,10 +1277,9 @@ public class PlaceOrderActivity extends BaseActivity implements ScanGunKeyEventH
                     });
 
 
-        } catch (NumberFormatException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
     public void offCreateOrder(int payType) {
@@ -1314,7 +1316,7 @@ public class PlaceOrderActivity extends BaseActivity implements ScanGunKeyEventH
         finishOrderData.setSequenceNumber(UUID.randomUUID().toString());
         finishOrderData.setMobilePhone(edMobilePhone.getText().toString());
 
-        final long offId = app.getDaoInstant().getFinishOrderDataDao().insertOrReplace(finishOrderData);
+        final long offId = App.getDaoInstant().getFinishOrderDataDao().insertOrReplace(finishOrderData);
         if (offId > 0) {//创建离线订单成功
             //存入商品列表
             Observable.from(orderItemBeen).map(new Func1<ItemSnapshotsBean, ItemSnapshotsBean>() {
@@ -1330,7 +1332,7 @@ public class PlaceOrderActivity extends BaseActivity implements ScanGunKeyEventH
                 @Override
                 public void call(List<ItemSnapshotsBean> itemSnapshotsBeen) {
                     try {
-                        app.getDaoInstant().getItemSnapshotsBeanDao().insertOrReplaceInTx(orderItemBeen);
+                        App.getDaoInstant().getItemSnapshotsBeanDao().insertOrReplaceInTx(orderItemBeen);
                         SupermarketIndexActivity.doSyncOffOder();
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -1353,6 +1355,14 @@ public class PlaceOrderActivity extends BaseActivity implements ScanGunKeyEventH
      */
     public void pay(int paytype, final String orderId) {
         try {
+
+            double ak = Arith.mul(_payMoney, Arith.del(1, mDiscount));
+            double temp_totalPrice = Arith.mul(_totalPrice, mDiscount);
+            double temp_discountMoney = Arith.add(ak, _discountMoney);
+            double temp_payMoney = Arith.mul(_payMoney, mDiscount);
+            double temp_vipDiscountMoney = Arith.add(ak, _vipDiscountMoney);
+            double temp_vipPayMoney = Arith.mul(_vipPayMoney, mDiscount);
+
             Intent intent = new Intent(mContext, PayActivity.class);
             intent.putExtra("payType", paytype);
             intent.putExtra("orderId", orderId);
@@ -1362,10 +1372,10 @@ public class PlaceOrderActivity extends BaseActivity implements ScanGunKeyEventH
 //            intent.putExtra("totalPrice", allMoney);
 //            intent.putExtra("totaldiscountPrice", totaldiscountPrice);//优惠金额
 //            intent.putExtra("discountPercent", mDiscount);
-            intent.putExtra("actualPrice", _payMoney);
-            intent.putExtra("totalPrice", _allMoney);
-            intent.putExtra("totaldiscountPrice", _discountMoney);//优惠金额
-            intent.putExtra("discountPercent", _vipDiscountMoney);
+            intent.putExtra("actualPrice", temp_payMoney);
+            intent.putExtra("totalPrice", temp_totalPrice);
+            intent.putExtra("totaldiscountPrice", temp_discountMoney);//优惠金额
+            intent.putExtra("discountPercent", temp_vipDiscountMoney);
             //2019-3-8
             intent.putExtra("phoneNumber", edMobilePhone.getText().toString());//手机号
             intent.putExtra(Contonts.PRICE_SHOULD, mGoodTotalPrice.getText().toString());
@@ -1637,9 +1647,8 @@ public class PlaceOrderActivity extends BaseActivity implements ScanGunKeyEventH
                     if (checkZeroPay()) {
                         return;
                     }
-                    MobclickAgent.onEvent(mContext, "alipay");
+                    //MobclickAgent.onEvent(mContext, "alipay");
                     submitCart(PAYTYPE[4]);
-
                 }
                 break;
             case R.id.iv_scan_pay:
@@ -1683,7 +1692,8 @@ public class PlaceOrderActivity extends BaseActivity implements ScanGunKeyEventH
                 checkCode(code);
                 break;
             case R.id.btn_discount:
-                discountDialog = new DiscountDialog(mContext, "总价折扣", "", mDiscount, new DiscountDialog.PriorityListener() {
+                double targetDiscount = Arith.mul(mDiscount, 10);
+                discountDialog = new DiscountDialog(mContext, "总价折扣", "", targetDiscount, new DiscountDialog.PriorityListener() {
                     @Override
                     public void refreshPriorityUI(double discount) {
                         if (discount == 0) {

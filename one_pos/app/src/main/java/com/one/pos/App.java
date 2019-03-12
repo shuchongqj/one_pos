@@ -21,9 +21,6 @@ public class App extends GApplication {
         //初始化缓存
         ItemCache.init(this);
 
-        //初始化商米打印
-        Sunmi.init(c);
-
         //http初始化
         Http.init(this);
     }
