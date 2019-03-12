@@ -98,7 +98,6 @@ import com.gzdb.supermarket.event.SetupEvent;
 import com.gzdb.supermarket.event.StatisticsEvent;
 import com.gzdb.supermarket.fragment.FreshDialogFragment;
 import com.gzdb.supermarket.scan.ScanGunKeyEventHelper;
-import com.gzdb.supermarket.util.Arith;
 import com.gzdb.supermarket.util.Contonts;
 import com.gzdb.supermarket.util.DialogUtil;
 import com.gzdb.supermarket.util.ImageUtil;
@@ -109,7 +108,6 @@ import com.gzdb.supermarket.util.ToNewFragEvent;
 import com.gzdb.supermarket.util.UrlUtil;
 import com.gzdb.supermarket.util.Utils;
 import com.gzdb.vaservice.bean.YctConfigBean;
-import com.gzdb.vip.VipCheckPhoneDialog;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.BitmapCallback;
 import com.lzy.okgo.callback.FileCallback;
@@ -268,7 +266,6 @@ public class SupermarketIndexActivity extends BaseActivity implements ScanGunKey
             return;
         }
         Observable.from(App.getDaoInstant().getFinishOrderDataDao().queryBuilder().limit(20).list())
-
                 .map(new Func1<FinishOrderData, FinishOrderData>() {
                     @Override
                     public FinishOrderData call(FinishOrderData finishOrderData) {
@@ -457,7 +454,7 @@ public class SupermarketIndexActivity extends BaseActivity implements ScanGunKey
             btnSpread.setVisibility(View.VISIBLE);
         }
 
-        GpUsbPrint.use = SPUtil.getInstance().getBoolean(this, "usbPrint", false);
+        GpUsbPrint.use = SPUtil.getInstance().getBoolean(this, "usbPrint2", true);
         GpUsbPrint.initPrinter(this);
         if (GpUsbPrint.use) {
             GpUsbPrint.connPrinter();
@@ -1031,7 +1028,6 @@ public class SupermarketIndexActivity extends BaseActivity implements ScanGunKey
     }
 
     //以下为百度语音合成初始化相关
-
     @Override
     public boolean onKeyUp(int keyCode, KeyEvent event) {
         switch (keyCode) {

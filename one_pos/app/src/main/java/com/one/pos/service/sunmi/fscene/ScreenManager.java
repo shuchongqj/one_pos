@@ -1,4 +1,5 @@
-package com.gzdb.screen;
+package com.one.pos.service.sunmi.fscene;
+
 
 import android.content.Context;
 import android.graphics.Rect;
@@ -10,7 +11,6 @@ import android.view.Display;
  * Created by highsixty on 2018/3/7.
  * mail  gaolulin@sunmi.com
  */
-
 
 public class ScreenManager {
 
@@ -75,3 +75,4 @@ public class ScreenManager {
     }
 
 }
+

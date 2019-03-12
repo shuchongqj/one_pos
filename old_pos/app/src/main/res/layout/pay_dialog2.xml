@@ -44,9 +44,9 @@
             android:textSize="@dimen/font_20"
             android:textStyle="bold" />
 
-        <Button
+        <TextView
             android:id="@+id/btn_join_vip"
-            style="?android:attr/borderlessButtonStyle"
+            android:gravity="center_horizontal|center_vertical"
             android:layout_width="@dimen/dp200"
             android:layout_height="@dimen/dp40"
             android:layout_gravity="center_vertical|center_horizontal"

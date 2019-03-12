@@ -46,7 +46,7 @@ public class ScaleFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_scale, container, false);
         ButterKnife.bind(this, view);
         connectScaleService();
-        shop_cart = SPUtil.getInstance().getBoolean(getContext(), "shop_cart",false);
+        shop_cart = SPUtil.getInstance().getBoolean(getContext(), "shop_cart2",true);
         swShopCart.setChecked(shop_cart);
         swShopCart.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override

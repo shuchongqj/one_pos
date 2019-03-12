@@ -450,6 +450,17 @@ public class ShopCart {
             }
         }
 
+        /**
+         * 初始化价格对象
+         */
+        public void initFreeItemPrice(double price) {
+            itemPrice = new ShopCartItemPrice();
+            itemPrice.initPrice(price);
+            //会员价
+            itemPrice.vipPrice = price;
+            itemPrice.orderPrice = price;
+        }
+
         public GoodBean getItem() {
             return item;
         }

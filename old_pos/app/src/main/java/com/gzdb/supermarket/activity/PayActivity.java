@@ -73,7 +73,7 @@ public class PayActivity extends BaseActivity implements View.OnClickListener, S
     private ImageView imageIcon;
     private TextView content;
     private LinearLayout layout;
-    private Button btn_join_vip;
+    private TextView btn_join_vip;
 
     private ScanGunKeyEventHelper scanGunKeyEventHelper = null;//扫码
 
@@ -122,7 +122,14 @@ public class PayActivity extends BaseActivity implements View.OnClickListener, S
         imageIcon = findViewById(R.id.image_icon);
         content = findViewById(R.id.content);
         btn_join_vip = findViewById(R.id.btn_join_vip);
-        btn_join_vip.setOnClickListener(this);
+        btn_join_vip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (btn_join_vip.getVisibility() == View.VISIBLE) {
+                    VipCheckPhoneDialog.showVipCheckPhoneDialog(PayActivity.this, orderId, phoneNumber);
+                }
+            }
+        });
 
         delete.setOnClickListener(this);
 
@@ -211,8 +218,6 @@ public class PayActivity extends BaseActivity implements View.OnClickListener, S
         int id = v.getId();
         if (id == R.id.delete) {
             finish();
-        } else if (id == R.id.btn_join_vip) {
-            VipCheckPhoneDialog.showVipCheckPhoneDialog(this, orderId, phoneNumber);
         }
     }
 

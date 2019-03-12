@@ -91,7 +91,7 @@ public class FreshDialogFragment extends AppCompatDialogFragment implements View
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         getDialog().requestWindowFeature(Window.FEATURE_NO_TITLE);
-        shop_cart = SPUtil.getInstance().getBoolean(getContext(), "shop_cart", false);
+        shop_cart = SPUtil.getInstance().getBoolean(getContext(), "shop_cart2", true);
         scanGunKeyEventHelper = new ScanGunKeyEventHelper(this);
         return inflater.inflate(R.layout.fragment_fresh_dialog, container, false);
     }
